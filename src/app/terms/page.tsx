@@ -13,7 +13,7 @@ export default function TermsPage() {
             <p className="text-gray-600 mb-6">Last updated: {new Date().toLocaleDateString()}</p>
             
             <h2 className="text-2xl font-semibold text-gray-900 mt-8 mb-4">1. Introduction</h2>
-            <p className="text-gray-700 mb-4">
+            <p className="text-lg text-[#171c3f]/80">
               Welcome to Magical Stories. By accessing or using our service, you agree to be bound by these Terms of Service. Please read them carefully.
             </p>
 
@@ -45,8 +45,11 @@ export default function TermsPage() {
             </p>
 
             <h2 className="text-2xl font-semibold text-gray-900 mt-8 mb-4">6. Changes to Terms</h2>
-            <p className="text-gray-700 mb-4">
+            <p className="text-lg text-[#171c3f]/80">
               We reserve the right to modify these terms at any time. We will notify users of any changes by updating the "Last updated" date at the top of these terms.
+            </p>
+            <p className="text-lg text-[#171c3f]/80">
+              Your continued use of the service constitutes acceptance of any changes.
             </p>
 
             <h2 className="text-2xl font-semibold text-gray-900 mt-8 mb-4">7. Contact Information</h2>
@@ -55,6 +58,11 @@ export default function TermsPage() {
             </p>
             <p className="text-gray-700">
               Email: support@magicalstories.com
+            </p>
+
+            <h2 className="text-2xl font-semibold text-gray-900 mt-8 mb-4">8. Additional Terms</h2>
+            <p className="text-lg text-[#171c3f]/80">
+              We&apos;re not responsible for any &quot;magical mishaps&quot; that may occur during story time.
             </p>
           </div>
 

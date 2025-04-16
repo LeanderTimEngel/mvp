@@ -98,7 +98,7 @@ export default function StoryForm() {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div className="space-y-2">
           <label htmlFor="childName" className="block text-sm font-medium text-[#171c3f]">
-            Child's Name
+            Child&apos;s Name
           </label>
           <div className="relative">
             <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
@@ -126,7 +126,7 @@ export default function StoryForm() {
 
         <div className="space-y-2">
           <label htmlFor="childAge" className="block text-sm font-medium text-[#171c3f]">
-            Child's Age
+            Child&apos;s Age
           </label>
           <div className="relative">
             <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
@@ -169,7 +169,7 @@ export default function StoryForm() {
               className={`block w-full pl-10 pr-3 py-2 border rounded-xl bg-white/50 focus:ring-2 focus:ring-[#fa6565]/20 focus:border-[#fa6565] text-[#171c3f] placeholder-[#171c3f]/40 ${
                 errors.favoriteCharacter ? 'border-[#FF6B6B]' : 'border-[#fa6565]/20'
               }`}
-              placeholder="Who's their favorite character?"
+              placeholder="Who&apos;s their favorite character?"
             />
           </div>
           {errors.favoriteCharacter && (

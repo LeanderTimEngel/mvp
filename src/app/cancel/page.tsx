@@ -24,8 +24,8 @@ export default function CancelPage() {
           <h1 className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-pink-600 mb-4">
             Payment Cancelled
           </h1>
-          <p className="text-gray-600 mb-6">
-            Your payment was cancelled. You&apos;ll be redirected to the home page in a few seconds.
+          <p className="text-lg text-[#171c3f]/80">
+            We&apos;re sorry to see you go! Your subscription has been cancelled and you&apos;ll continue to have access until the end of your billing period.
           </p>
         </div>
       </div>

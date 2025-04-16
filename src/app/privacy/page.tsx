@@ -74,6 +74,14 @@ export default function PrivacyPage() {
             <p className="text-gray-700">
               Email: privacy@magicalstories.com
             </p>
+
+            <p className="text-lg text-[#171c3f]/80">
+              We take your child&apos;s privacy seriously. Our privacy policy outlines how we collect, use, and protect your information.
+            </p>
+
+            <p className="text-lg text-[#171c3f]/80">
+              We&apos;ll never share your child&apos;s information with third parties without your explicit consent.
+            </p>
           </div>
 
           <div className="mt-12 pt-8 border-t border-gray-200">
