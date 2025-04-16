@@ -97,7 +97,7 @@ export default function Home() {
               />
             </div>
             <div className="mt-4 text-center">
-              <p className="text-[#171c3f]/80">See how Magical Stories brings your child's imagination to life</p>
+              <p className="text-[#171c3f]/80">See how Magical Stories brings your child&apos;s imagination to life</p>
             </div>
           </div>
         </div>

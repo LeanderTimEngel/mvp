@@ -46,7 +46,7 @@ export default function TermsPage() {
 
             <h2 className="text-2xl font-semibold text-gray-900 mt-8 mb-4">6. Changes to Terms</h2>
             <p className="text-lg text-[#171c3f]/80">
-              We reserve the right to modify these terms at any time. We will notify users of any changes by updating the "Last updated" date at the top of these terms.
+              We reserve the right to modify these terms at any time. We will notify users of any changes by updating the &quot;Last updated&quot; date at the top of these terms.
             </p>
             <p className="text-lg text-[#171c3f]/80">
               Your continued use of the service constitutes acceptance of any changes.

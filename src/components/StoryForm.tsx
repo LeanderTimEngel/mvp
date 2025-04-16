@@ -278,7 +278,7 @@ export default function StoryForm() {
 
         <div className="md:col-span-2 space-y-2">
           <label htmlFor="parentEmail" className="block text-sm font-medium text-[#171c3f]">
-            Parent's Email
+            Parent&apos;s Email
           </label>
           <div className="relative">
             <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
