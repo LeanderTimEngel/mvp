@@ -142,7 +142,7 @@ export default function Home() {
                 Magical Stories for Your Little One
               </h1>
               <p className="text-lg sm:text-xl text-[#171c3f]/80 max-w-2xl leading-relaxed">
-                Create personalized audio stories that spark your child's imagination. 
+                Create personalized audio stories that spark your child&apos;s imagination. 
                 Perfect for bedtime, car rides, or any time they need a magical adventure!
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
