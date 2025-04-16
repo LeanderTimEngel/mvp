@@ -1,10 +1,10 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { loadStripe } from '@stripe/stripe-js';
 import { StoryFormData } from './StoryForm';
 
-let stripePromise: Promise<any> | null = null;
+let stripePromise: Promise<ReturnType<typeof loadStripe>> | null = null;
 
 const getStripe = () => {
   if (!stripePromise) {
@@ -15,11 +15,10 @@ const getStripe = () => {
 
 interface PaymentFormProps {
   formData: StoryFormData;
-  onSuccess: () => void;
   onCancel: () => void;
 }
 
-export default function PaymentForm({ formData, onSuccess, onCancel }: PaymentFormProps) {
+export default function PaymentForm({ formData, onCancel }: PaymentFormProps) {
   const [isProcessing, setIsProcessing] = useState(false);
 
   const handlePayment = async () => {

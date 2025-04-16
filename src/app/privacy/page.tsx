@@ -17,7 +17,7 @@ export default function PrivacyPage() {
               We collect information that you provide directly to us, including:
             </p>
             <ul className="list-disc pl-6 text-gray-700 mb-4">
-              <li>Child's name and age</li>
+              <li>Child&apos;s name and age</li>
               <li>Story preferences and customization details</li>
               <li>Email address for story delivery</li>
               <li>Payment information (processed securely through our payment provider)</li>
@@ -40,7 +40,7 @@ export default function PrivacyPage() {
               We implement appropriate security measures to protect your personal information. However, no method of transmission over the Internet is 100% secure.
             </p>
 
-            <h2 className="text-2xl font-semibold text-gray-900 mt-8 mb-4">4. Children's Privacy</h2>
+            <h2 className="text-2xl font-semibold text-gray-900 mt-8 mb-4">4. Children&apos;s Privacy</h2>
             <p className="text-gray-700 mb-4">
               Our service is designed for parents to create stories for their children. We do not knowingly collect personal information directly from children under 13.
             </p>
