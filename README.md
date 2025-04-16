@@ -1,36 +1,69 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Personalized Children's Story Generator
 
-## Getting Started
+An AI-powered web application that generates personalized audio stories for children aged 4-10. Parents can input their child's details and preferences to create unique, engaging stories that feature their child as the main character.
 
-First, run the development server:
+## Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- Personalized story generation using OpenAI's GPT-3.5
+- Text-to-speech conversion for audio stories
+- Email delivery of stories and audio files
+- Age-appropriate content
+- Simple and intuitive user interface
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Prerequisites
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- Node.js 18.x or later
+- npm or yarn
+- OpenAI API key
+- SendGrid API key and verified sender email
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Setup
 
-## Learn More
+1. Clone the repository:
+   ```bash
+   git clone <repository-url>
+   cd personalized-story-generator
+   ```
 
-To learn more about Next.js, take a look at the following resources:
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+3. Create a `.env.local` file in the root directory with the following variables:
+   ```
+   OPENAI_API_KEY=your_openai_api_key_here
+   SENDGRID_API_KEY=your_sendgrid_api_key_here
+   SENDGRID_FROM_EMAIL=your_verified_sender_email@example.com
+   ```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+4. Start the development server:
+   ```bash
+   npm run dev
+   ```
 
-## Deploy on Vercel
+5. Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Environment Variables
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- `OPENAI_API_KEY`: Your OpenAI API key for story generation and text-to-speech
+- `SENDGRID_API_KEY`: Your SendGrid API key for email delivery
+- `SENDGRID_FROM_EMAIL`: Your verified sender email address for SendGrid
+
+## Technologies Used
+
+- Next.js 14
+- TypeScript
+- Tailwind CSS
+- OpenAI API
+- SendGrid
+- React Hook Form
+- Zod
+
+## Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+## License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
