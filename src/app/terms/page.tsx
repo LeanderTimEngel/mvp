@@ -19,9 +19,9 @@ export default function TermsPage() {
 
             <h2 className="text-2xl font-semibold text-gray-900 mt-8 mb-4">2. Definitions</h2>
             <ul className="list-disc pl-6 text-gray-700 mb-4">
-              <li>"Service" refers to our AI-powered story generation platform</li>
-              <li>"User" refers to any individual or entity using our Service</li>
-              <li>"Content" refers to any stories, audio, or other materials generated through our Service</li>
+              <li>&quot;Service&quot; refers to our AI-powered story generation platform</li>
+              <li>&quot;User&quot; refers to any individual or entity using our Service</li>
+              <li>&quot;Content&quot; refers to any stories, audio, or other materials generated through our Service</li>
             </ul>
 
             <h2 className="text-2xl font-semibold text-gray-900 mt-8 mb-4">3. User Responsibilities</h2>
