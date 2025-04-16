@@ -4,7 +4,6 @@ import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
-import PaymentForm from './PaymentForm';
 
 const STORY_CATEGORIES = [
   'Adventure',
@@ -25,7 +24,7 @@ const STORY_LENGTHS = [
 
 const formSchema = z.object({
   childName: z.string()
-    .min(1, 'Please enter your child\'s name')
+    .min(1, 'Please enter your child&apos;s name')
     .max(50, 'Name is too long'),
   childAge: z.number()
     .min(4, 'Child must be at least 4 years old')
@@ -51,8 +50,6 @@ const formSchema = z.object({
 type FormData = z.infer<typeof formSchema>;
 
 export default function StoryForm() {
-  const [showPayment, setShowPayment] = useState(false);
-  const [formData, setFormData] = useState<FormData | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -90,10 +87,6 @@ export default function StoryForm() {
       setIsSubmitting(false);
     }
   };
-
-  if (showPayment && formData) {
-    return null;
-  }
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">

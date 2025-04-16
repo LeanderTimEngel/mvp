@@ -2,9 +2,19 @@
 
 import { useState } from 'react';
 import { loadStripe } from '@stripe/stripe-js';
-import { StoryFormData } from './StoryForm';
+import type { Stripe } from '@stripe/stripe-js';
 
-let stripePromise: Promise<ReturnType<typeof loadStripe>> | null = null;
+interface StoryFormData {
+  childName: string;
+  childAge: number;
+  favoriteCharacter: string;
+  hobby: string;
+  storyCategory: string;
+  storyLength: 'short' | 'medium' | 'long';
+  parentEmail: string;
+}
+
+let stripePromise: Promise<Stripe | null> | null = null;
 
 const getStripe = () => {
   if (!stripePromise) {
@@ -42,6 +52,9 @@ export default function PaymentForm({ formData, onCancel }: PaymentFormProps) {
       
       // Redirect to Stripe Checkout
       const stripe = await getStripe();
+      if (!stripe) {
+        throw new Error('Failed to load Stripe');
+      }
       const { error } = await stripe.redirectToCheckout({
         sessionId,
       });
