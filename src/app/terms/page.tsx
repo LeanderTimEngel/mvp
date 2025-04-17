@@ -2,7 +2,6 @@ import { COLORS } from '@/lib/constants';
 import Footer from '@/components/Footer';
 import Header from '@/components/Header';
 import Link from 'next/link';
-import Logo from '@/components/Logo';
 
 export default function TermsOfService() {
   return (

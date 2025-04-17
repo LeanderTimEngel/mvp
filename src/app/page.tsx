@@ -1,8 +1,6 @@
 'use client';
 
 import { useState } from 'react';
-import Link from 'next/link';
-import Logo from '@/components/Logo';
 import Header from '@/components/Header';
 import HeroSection from '@/components/HeroSection';
 import FeaturesSection from '@/components/FeaturesSection';
@@ -12,7 +10,6 @@ import CtaSection from '@/components/CtaSection';
 import Footer from '@/components/Footer';
 import DemoModal from '@/components/DemoModal';
 import DemoSection from '@/components/DemoSection';
-import { COLORS } from '@/lib/constants';
 
 export default function Home() {
   const [isDemoOpen, setIsDemoOpen] = useState(false);

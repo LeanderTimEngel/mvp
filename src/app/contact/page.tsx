@@ -2,9 +2,7 @@ import { Metadata } from "next";
 import { COLORS } from '@/lib/constants';
 import Footer from '@/components/Footer';
 import Header from '@/components/Header';
-import Link from 'next/link';
-import Logo from '@/components/Logo';
-import ContactForm from '@/components/ContactForm'; // Import the new client component
+import ContactForm from '@/components/ContactForm';
 
 // Metadata remains here in the Server Component
 export const metadata: Metadata = {
