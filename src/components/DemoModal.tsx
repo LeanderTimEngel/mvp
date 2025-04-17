@@ -1,7 +1,6 @@
 'use client';
 
 import { useEffect } from 'react';
-import { COLORS, DEMO_VIDEO_URL } from '@/lib/constants';
 
 interface DemoModalProps {
   show: boolean;
