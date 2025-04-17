@@ -33,4 +33,4 @@ export const STORY_LENGTH_WORDS = {
 };
 
 // Demo Video URL
-export const DEMO_VIDEO_URL = 'https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1&rel=0'; 
+export const DEMO_VIDEO_URL = 'https://www.loom.com/share/b0f9157b0ee04dbabc66bbbc4d0aefe7?sid=afdbb7c2-3dd1-420a-b286-5e074d4da96b'; 

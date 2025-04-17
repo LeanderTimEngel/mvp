@@ -40,45 +40,38 @@ export default function DemoModal({ show, onClose }: DemoModalProps) {
 
   return (
     <div 
-      className="fixed inset-0 z-[100] flex items-center justify-center p-4 animate-fade-in-fast"
-      aria-labelledby="demo-modal-title"
-      role="dialog"
-      aria-modal="true"
+      className={`fixed inset-0 z-[100] flex items-center justify-center transition-opacity duration-300 ${show ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
+      onClick={onClose} // Close on backdrop click
     >
-      {/* Overlay */}
-      <div 
-        className="absolute inset-0 bg-black/75 backdrop-blur-sm"
-        onClick={onClose} // Close modal on overlay click
-        aria-hidden="true"
-      ></div>
+      <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" aria-hidden="true"></div>
       
       {/* Modal Content */}
-      <div className="relative z-[101] bg-white rounded-2xl p-6 max-w-4xl w-full shadow-xl">
+      <div 
+        className={`relative bg-white rounded-xl shadow-2xl w-full max-w-3xl mx-4 transition-all duration-300 ${show ? 'scale-100 opacity-100' : 'scale-95 opacity-0'}`}
+        onClick={(e) => e.stopPropagation()} // Prevent closing when clicking inside modal
+      >
         {/* Close Button */}
-        <button
+        <button 
           onClick={onClose}
-          className={`absolute -top-3 -right-3 md:-top-5 md:-right-5 text-white bg-[${COLORS.dark}]/70 rounded-full p-1.5 hover:bg-[${COLORS.dark}] transition-colors duration-300`}
-          aria-label="Close demo video modal"
+          className="absolute top-3 right-3 text-gray-400 hover:text-gray-700 transition-colors p-1 rounded-full bg-white/50 hover:bg-gray-100 z-10"
+          aria-label="Close demo video"
         >
           <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
           </svg>
         </button>
-        
-        {/* Video Embed */}
-        <div className="aspect-video w-full rounded-xl overflow-hidden bg-black">
-          <iframe
-            className="w-full h-full"
-            src={DEMO_VIDEO_URL} // Use constant for URL
-            title="Magical Stories Demo"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen
-          />
-        </div>
-        
-        {/* Optional Caption */}
-        <div className="mt-4 text-center">
-          <p id="demo-modal-title" className={`text-sm text-[${COLORS.dark}]/70`}>Watch how Magical Stories brings imagination to life!</p>
+
+        {/* Video Embed Area - Replace with Loom code */}
+        <div className="aspect-video overflow-hidden rounded-xl"> {/* Maintain aspect ratio */} 
+          {/* Replace previous iframe/placeholder with Loom div and iframe */}
+          <div style={{position: 'relative', paddingBottom: '56.25%', height: 0}}>
+            <iframe 
+              src="https://www.loom.com/embed/b0f9157b0ee04dbabc66bbbc4d0aefe7?sid=a89e0ca1-8279-43dd-94ee-789fc76c8871" 
+              frameBorder="0" 
+              allowFullScreen 
+              style={{position: 'absolute', top: 0, left: 0, width: '100%', height: '100%'}}
+            ></iframe>
+          </div>
         </div>
       </div>
     </div>
