@@ -40,9 +40,6 @@ export default function ContactForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState('');
-  const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">(
-    "idle"
-  );
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
@@ -51,8 +48,7 @@ export default function ContactForm() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setStatus("sending");
-    setIsSubmitting(true); // Start submitting visual state
+    setIsSubmitting(true);
     setError('');
 
     // **Placeholder:** Replace with your actual form submission logic (e.g., API call)
@@ -61,14 +57,12 @@ export default function ContactForm() {
       await new Promise(resolve => setTimeout(resolve, 1500)); // Simulate network delay
       setSubmitted(true);
       setFormData({ name: '', email: '', subject: '', message: '' });
-      setStatus("success");
     } catch (error) {
       // You might want to log the error to an error reporting service
       // console.error(error);
       setError('Something went wrong. Please try again later.');
-      setStatus("error");
     } finally {
-      setIsSubmitting(false); // End submitting visual state regardless of outcome
+      setIsSubmitting(false);
     }
   };
 
@@ -237,4 +231,4 @@ export default function ContactForm() {
       </div>
     </div>
   );
-} 
+}

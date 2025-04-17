@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { useForm, UseFormRegister, FieldError, FieldErrors } from 'react-hook-form';
+import { useForm, UseFormRegister, FieldError } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { COLORS, STORY_CATEGORIES, STORY_LENGTHS } from '@/lib/constants';
@@ -43,7 +43,7 @@ interface FormFieldProps {
   register: UseFormRegister<FormData>;
   error?: FieldError;
   options?: Array<{ value: string; label: string }>;
-  attrs?: Record<string, any>;
+  attrs?: Record<string, string | number | boolean>;
   valueAsNumber?: boolean;
 }
 
@@ -163,7 +163,7 @@ export default function StoryForm() {
         <style jsx>{`@keyframes draw { to { stroke-dashoffset: 0; } }`}</style>
         <h2 className={`text-2xl font-bold text-[${COLORS.dark}]`}>✨ Story Sent! ✨</h2>
         <p className={`text-[${COLORS.dark}]/80 text-base max-w-sm`}>
-          We've emailed the magical tale for {submittedData.childName} to <span className="font-medium">{submittedData.parentEmail}</span>. Check your inbox (and spam folder) soon!
+          We&apos;ve emailed the magical tale for {submittedData.childName} to <span className="font-medium">{submittedData.parentEmail}</span>. Check your inbox (and spam folder) soon!
         </p>
         <button
           onClick={() => { setSuccess(false); setSubmittedData(null); }} // Reset state

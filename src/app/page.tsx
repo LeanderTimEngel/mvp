@@ -12,14 +12,6 @@ import Footer from '@/components/Footer';
 import DemoModal from '@/components/DemoModal';
 import DemoSection from '@/components/DemoSection';
 import { COLORS } from '@/lib/constants';
-import dynamic from 'next/dynamic';
-import StoryForm from '@/components/StoryForm';
-
-// Dynamically import components to potentially reduce initial bundle size
-// const Navigation = dynamic(() => import('@/components/Navigation'));
-
-// DEMO_VIDEO_URL constant - if not used elsewhere, it could be moved into DemoModal.tsx
-const DEMO_VIDEO_URL = "https://www.youtube.com/embed/dQw4w9WgXcQ"; // Example URL
 
 export default function Home() {
   const [isDemoOpen, setIsDemoOpen] = useState(false);

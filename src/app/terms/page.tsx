@@ -92,6 +92,8 @@ export default function TermsOfService() {
             <h2>10. Contact Us</h2>
             <p>If you have any questions about these Terms, please contact us via our <Link href="/contact">Contact Page</Link>.</p>
             
+            <li>If you&apos;re dissatisfied with your purchase, you can request a refund within 24 hours of your purchase. To be eligible for a return, your item must be unused and in the same condition that you received it.</li>
+            
             {/* --- END TERMS OF SERVICE CONTENT --- */}
           </div>
         </div>

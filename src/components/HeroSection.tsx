@@ -1,6 +1,5 @@
 'use client';
 
-import Link from 'next/link';
 import StoryForm from '@/components/StoryForm';
 
 // Define props interface
