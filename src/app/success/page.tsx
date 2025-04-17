@@ -3,6 +3,8 @@
 import { useEffect } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 
+export const dynamic = 'force-dynamic'; // Prevent static generation
+
 export default function SuccessPage() {
   const router = useRouter();
   const searchParams = useSearchParams();
