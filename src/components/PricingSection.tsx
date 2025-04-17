@@ -15,9 +15,12 @@ export default function PricingSection() {
           {/* One-Time Story Card */}
           <div className="bg-white/80 backdrop-blur-md rounded-2xl shadow-lg border border-gray-100 p-6 sm:p-8 flex flex-col">
             <h3 className={`text-xl font-semibold text-[${COLORS.dark}] mb-4`}>One-Time Story</h3>
-            <p className="text-3xl sm:text-4xl font-bold text-gray-900 mb-2">
-              $1.99 <span className="text-base font-normal text-gray-500">/ story</span>
-            </p>
+            <div className="mb-2">
+              <p className="text-3xl sm:text-4xl font-bold text-gray-900">
+                $1.99 <span className="text-base font-normal text-gray-500">/ story</span>
+              </p>
+              <p className={`text-lg font-semibold text-green-600 mt-1`}>Currently Free!</p>
+            </div>
             <p className="text-gray-600 mb-6 text-sm">Perfect for trying out or special occasions.</p>
             
             {/* Features List */}
