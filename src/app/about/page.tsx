@@ -1,8 +1,9 @@
+import { Metadata } from 'next';
 import { COLORS } from '@/lib/constants';
 import Footer from '@/components/Footer';
 import Link from 'next/link';
 import Logo from '@/components/Logo';
-import Image from 'next/image';
+import React from 'react';
 
 export default function About() {
   return (
@@ -31,8 +32,17 @@ export default function About() {
         <div className="relative pt-24 pb-16 bg-gradient-to-b from-white to-[#fafaf8]">
           <div className="absolute inset-0 bg-gradient-to-r from-[#fa6565]/5 to-[#f2c955]/5 opacity-50"></div>
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-            <h1 className={`text-4xl sm:text-5xl font-bold text-[${COLORS.dark}] mb-4`}>Our Magical Journey</h1>
-            <p className="text-xl text-gray-600 mb-6">Bringing Imagination to Life, One Story at a Time</p>
+            <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">About Magical Stories</h1>
+            <p className="mt-6 text-lg leading-8 text-gray-600">
+              Welcome to Magical Stories, where imagination comes to life! We believe in the power of storytelling to
+              inspire, educate, and entertain children. Our mission is to create personalized audio stories that spark
+              creativity and make bedtime a truly magical experience.
+            </p>
+            <p className="mt-4 text-lg leading-8 text-gray-600">
+              Founded by a team of passionate parents and educators, Magical Stories uses cutting-edge AI technology to
+              craft unique tales tailored to your child&apos;s interests. From brave knights to curious explorers, we bring
+              their favorite characters and themes into enchanting audio adventures.
+            </p>
             <div className="w-24 h-1.5 bg-gradient-to-r from-[${COLORS.primary}] to-[${COLORS.secondary}] mx-auto rounded-full"></div>
           </div>
         </div>
@@ -46,9 +56,11 @@ export default function About() {
               <div>
                 <h2 className={`text-3xl font-semibold text-[${COLORS.dark}] mb-4`}>Our Story</h2>
                 <p className="text-gray-700 leading-relaxed">
-                  Magical Stories was founded with a simple idea: every child deserves stories that spark their imagination and 
-                  make them the hero of their own adventures. We combine cutting-edge AI technology with the timeless art of 
-                  storytelling to create personalized stories that children cherish.
+                  Welcome to Magical Stories, where technology meets creativity to craft unforgettable audio adventures for young listeners.
+                  We believe in the power of storytelling to spark imagination, foster learning, and create lasting memories.
+                  Our journey began with a simple idea: what if every child could be the hero of their own story?
+                  Driven by this vision, we set out to build a platform that uses cutting-edge AI to generate personalized audio narratives
+                  tailored to each child&apos;s unique interests and name.
                 </p>
               </div>
               <div className="relative h-64 rounded-xl overflow-hidden shadow-lg">
@@ -56,7 +68,6 @@ export default function About() {
                 <div className="absolute inset-0 bg-gradient-to-br from-[#fa6565]/80 to-[#f2c955]/80 flex items-center justify-center">
                   <span className="text-white text-4xl font-bold">📖</span>
                 </div>
-                {/* <Image src="/images/our-story.jpg" alt="Kids listening to a story" layout="fill" objectFit="cover" /> */}
               </div>
             </section>
 
@@ -67,14 +78,11 @@ export default function About() {
                 <div className="absolute inset-0 bg-gradient-to-bl from-[#fa6565]/80 to-[#f2c955]/80 flex items-center justify-center">
                   <span className="text-white text-4xl font-bold">🎯</span>
                 </div>
-                {/* <Image src="/images/our-mission.jpg" alt="Child reading a book" layout="fill" objectFit="cover" /> */}
               </div>
               <div>
                 <h2 className={`text-3xl font-semibold text-[${COLORS.dark}] mb-4`}>Our Mission</h2>
                 <p className="text-gray-700 leading-relaxed">
-                  Our mission is to inspire a love of reading and storytelling in children worldwide. We believe personalized 
-                  stories forge stronger connections and more meaningful reading experiences. By placing children at the center 
-                  of their own narratives, we aim to make reading a truly magical and immersive journey.
+                  At Magical Stories, we believe in the power of imagination. Our mission is to create personalized, engaging audio stories that spark children&apos;s creativity and make learning fun. We combine cutting-edge AI technology with a passion for storytelling to deliver unique experiences for every child.
                 </p>
               </div>
             </section>
@@ -83,7 +91,7 @@ export default function About() {
             <section className="text-center bg-white p-8 sm:p-10 rounded-2xl shadow-md border border-gray-100">
               <h2 className={`text-3xl font-semibold text-[${COLORS.dark}] mb-6`}>How the Magic Happens</h2>
               <p className="text-gray-700 leading-relaxed max-w-2xl mx-auto mb-10">
-                Our advanced AI crafts unique stories based on your child's name, age, interests, and favorite characters. 
+                Our advanced AI crafts unique stories based on your child&apos;s name, age, interests, and favorite characters. 
                 Each tale ensures age-appropriate content with positive messages. Our text-to-speech tech then creates 
                 high-quality audio narrations, perfect for screen-free enjoyment anytime.
               </p>
@@ -117,7 +125,7 @@ export default function About() {
                     { icon: '💖', text: 'Personalized stories make their child feel special' },
                     { icon: '🎧', text: 'High-quality audio for screen-free entertainment' },
                     { icon: '✨', text: 'Stories that encourage imagination and creativity' },
-                    { icon: '🎓', text: 'Educational content tailored to their child\'s age' }
+                    { icon: '🎓', text: 'Educational content tailored to their child&apos;s age' }
                   ].map((item, index) => (
                     <div key={index} className="flex items-start bg-white/70 p-5 rounded-lg shadow-sm backdrop-blur-sm">
                       <span className="text-2xl mr-4 mt-0.5">{item.icon}</span> 
@@ -131,7 +139,7 @@ export default function About() {
             <section className="text-center pt-4">
               <h2 className={`text-3xl font-semibold text-[${COLORS.dark}] mb-4`}>Join Our Community</h2>
               <p className="text-gray-700 leading-relaxed max-w-xl mx-auto mb-8">
-                We're building a community of parents and children who love stories. Follow us on social media for updates, 
+                We&apos;re building a community of parents and children who love stories. Follow us on social media for updates, 
                 special offers, and tips to encourage a love of reading.
               </p>
               <Link 
@@ -148,4 +156,32 @@ export default function About() {
       <Footer />
     </main>
   );
-} 
+}
+
+export const metadata: Metadata = {
+  title: 'About Us | Magical Stories',
+  description: 'Learn more about Magical Stories and our mission to create personalized audio adventures for children.',
+  keywords: ['Magical Stories', 'personalized stories', 'AI storytelling', 'bedtime stories', 'family reading'],
+  openGraph: {
+    title: 'About Us | Magical Stories',
+    description: 'Learn more about Magical Stories and our mission to create personalized audio adventures for children.',
+    url: 'https://www.magicalstories.com/about',
+    siteName: 'Magical Stories',
+    images: [
+      {
+        url: 'https://www.magicalstories.com/og-image.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Magical Stories'
+      }
+    ],
+    locale: 'en-US',
+    type: 'website'
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'About Us | Magical Stories',
+    description: 'Learn more about Magical Stories and our mission to create personalized audio adventures for children.',
+    images: ['https://www.magicalstories.com/og-image.jpg']
+  }
+}; 

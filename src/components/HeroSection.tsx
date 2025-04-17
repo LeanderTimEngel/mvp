@@ -3,7 +3,12 @@
 import Link from 'next/link';
 import StoryForm from '@/components/StoryForm';
 
-export default function HeroSection() {
+// Define props interface
+interface HeroSectionProps {
+  openDemo: () => void;
+}
+
+export default function HeroSection({ openDemo }: HeroSectionProps) { // Destructure openDemo prop
   return (
     <div className="relative overflow-hidden pt-24 pb-12 sm:pt-32 sm:pb-20">
       <div className="absolute inset-0 bg-gradient-to-r from-[#fa6565]/5 to-[#f2c955]/5" />
@@ -18,6 +23,15 @@ export default function HeroSection() {
               Perfect for bedtime, car rides, or any time they need a magical adventure!
             </p>
             <div className="flex flex-col sm:flex-row items-center gap-6 sm:gap-8 pt-4">
+              <button
+                onClick={openDemo}
+                className="inline-flex items-center justify-center whitespace-nowrap rounded-full text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 bg-[#171c3f]/10 text-[#171c3f] hover:bg-[#171c3f]/20 h-11 px-8"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clipRule="evenodd" />
+                </svg>
+                Watch Demo
+              </button>
               <div className="flex items-center space-x-2">
                 <div className="flex -space-x-2">
                   {[1, 2, 3, 4].map((i) => (

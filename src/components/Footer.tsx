@@ -51,8 +51,8 @@ export default function Footer() {
             <h3 className="text-lg font-bold mb-4">Contact</h3>
             <ul className="space-y-2 text-sm">
               <li>
-                <a href="mailto:hello@magicalstories.com" className="text-gray-300 hover:text-white transition-colors break-all">
-                  hello@magicalstories.com
+                <a href="mailto:s-lengel@ucp.pt" className="text-gray-300 hover:text-white transition-colors break-all">
+                  s-lengel@ucp.pt
                 </a>
               </li>
               <li className="text-gray-300">123 Story Lane, Imagination City</li>
