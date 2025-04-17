@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { useForm, UseFormRegister, FieldError } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
+import { toast } from 'react-hot-toast';
 import { COLORS, STORY_CATEGORIES, STORY_LENGTHS } from '@/lib/constants';
 
 const formSchema = z.object({
@@ -17,19 +18,6 @@ const formSchema = z.object({
 });
 
 type FormData = z.infer<typeof formSchema>;
-
-// Reusable error message component
-const ErrorMessage = ({ message }: { message?: string }) => {
-  if (!message) return null;
-  return (
-    <p className={`text-sm text-[${COLORS.error}] flex items-center mt-1.5`} role="alert">
-      <svg className="w-4 h-4 mr-1.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-      </svg>
-      {message}
-    </p>
-  );
-};
 
 interface FormFieldProps {
   id: keyof FormData;
@@ -91,14 +79,13 @@ const FormField = ({
           />
         )}
       </div>
-      {error && <ErrorMessage message={error.message} />}
+      {error && <p className={`text-sm text-[${COLORS.error}] mt-1.5`}>{error.message}</p>}
     </div>
   );
 };
 
 export default function StoryForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState(false);
   const [submittedData, setSubmittedData] = useState<FormData | null>(null);
 
@@ -119,7 +106,6 @@ export default function StoryForm() {
 
   const onSubmit = async (data: FormData) => {
     setIsSubmitting(true);
-    setError(null);
     setSubmittedData(data); // Store submitted data for success message
 
     try {
@@ -131,7 +117,6 @@ export default function StoryForm() {
 
       if (!response.ok) {
         const errorData = await response.json();
-        // Try to extract a more specific error if available
         const specificError = errorData.details ? 
           Object.values(errorData.details).flat().join(', ') : 
           errorData.error;
@@ -141,7 +126,9 @@ export default function StoryForm() {
       setSuccess(true);
       reset(); // Reset form fields to defaults
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'An unknown error occurred. Please try again.');
+      // Log the actual error for debugging, but show a generic message to the user
+      console.error("Story generation failed:", err);
+      toast.error("Sorry, we couldn't create your story right now. Please double-check your details and try again. If the problem persists, please contact support.");
     } finally {
       setIsSubmitting(false);
     }
@@ -208,13 +195,6 @@ export default function StoryForm() {
           </div>
         ))}
       </div>
-
-      {/* Global Form Error */}
-      {error && (
-        <div className={`p-3.5 rounded-xl bg-[${COLORS.error}]/10 border border-[${COLORS.error}]/20`}>
-          <ErrorMessage message={error} />
-        </div>
-      )}
 
       {/* Submit Button */}
       <button

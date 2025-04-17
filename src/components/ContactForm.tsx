@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { toast } from 'react-hot-toast';
 import { COLORS } from '@/lib/constants';
 
 // Simple Accordion Component for FAQs (moved here as it uses useState)
@@ -39,7 +40,6 @@ export default function ContactForm() {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
-  const [error, setError] = useState('');
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
@@ -49,7 +49,6 @@ export default function ContactForm() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    setError('');
 
     // **Placeholder:** Replace with your actual form submission logic (e.g., API call)
     try {
@@ -57,10 +56,11 @@ export default function ContactForm() {
       await new Promise(resolve => setTimeout(resolve, 1500)); // Simulate network delay
       setSubmitted(true);
       setFormData({ name: '', email: '', subject: '', message: '' });
+      toast.success("Message sent!");
     } catch {
       // You might want to log the error to an error reporting service
       // console.error(error);
-      setError('Something went wrong. Please try again later.');
+      toast.error('Something went wrong. Please try again later.');
     } finally {
       setIsSubmitting(false);
     }
@@ -158,11 +158,6 @@ export default function ContactForm() {
                 placeholder="How can we help you?"
               ></textarea>
             </div>
-            {error && (
-              <div className={`p-3 bg-[${COLORS.error}]/10 border border-[${COLORS.error}]/20 text-[${COLORS.error}] rounded-lg text-sm`}>
-                {error}
-              </div>
-            )}
             <button
               type="submit"
               disabled={isSubmitting}
