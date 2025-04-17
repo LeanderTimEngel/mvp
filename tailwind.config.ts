@@ -1,4 +1,5 @@
 import type { Config } from 'tailwindcss';
+import { COLORS } from './src/lib/constants';
 
 const config: Config = {
   content: [
@@ -8,6 +9,7 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      colors: COLORS,
       animation: {
         'fade-in': 'fadeIn 0.5s ease-out',
         'slide-up': 'slideUp 0.5s ease-out',
