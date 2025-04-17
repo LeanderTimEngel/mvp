@@ -57,7 +57,7 @@ export default function ContactForm() {
       await new Promise(resolve => setTimeout(resolve, 1500)); // Simulate network delay
       setSubmitted(true);
       setFormData({ name: '', email: '', subject: '', message: '' });
-    } catch (error) {
+    } catch {
       // You might want to log the error to an error reporting service
       // console.error(error);
       setError('Something went wrong. Please try again later.');

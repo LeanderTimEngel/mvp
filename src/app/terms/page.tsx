@@ -81,7 +81,7 @@ export default function TermsOfService() {
             <p>In no case shall Magical Stories, our directors, officers, employees, affiliates, agents, contractors, interns, suppliers, service providers or licensors be liable for any injury, loss, claim, or any direct, indirect, incidental, punitive, special, or consequential damages of any kind, arising from your use of the Service or any products procured using the Service.</p>
 
             <h2>7. Indemnification</h2>
-            <p>You agree to indemnify, defend and hold harmless Magical Stories and our parent, subsidiaries, affiliates, partners, officers, directors, agents, contractors, licensors, service providers, subcontractors, suppliers, interns and employees, from any claim or demand, including reasonable attorneys' fees, made by any third-party due to or arising out of your breach of these Terms or your violation of any law or the rights of a third-party.</p>
+            <p>You agree to indemnify, defend and hold harmless Magical Stories and our parent, subsidiaries, affiliates, partners, officers, directors, agents, contractors, licensors, service providers, subcontractors, suppliers, interns and employees, from any claim or demand, including reasonable attorneys&apos; fees, made by any third-party due to or arising out of your breach of these Terms or your violation of any law or the rights of a third-party.</p>
 
             <h2>8. Governing Law</h2>
             <p>These Terms shall be governed and construed in accordance with the laws of [Your Jurisdiction, e.g., California, USA], without regard to its conflict of law provisions.</p>
@@ -92,7 +92,7 @@ export default function TermsOfService() {
             <h2>10. Contact Us</h2>
             <p>If you have any questions about these Terms, please contact us via our <Link href="/contact">Contact Page</Link>.</p>
             
-            <li>If you&apos;re dissatisfied with your purchase, you can request a refund within 24 hours of your purchase. To be eligible for a return, your item must be unused and in the same condition that you received it.</li>
+            <p>If you&apos;re dissatisfied with your purchase, you can request a refund within 24 hours of your purchase. To be eligible for a return, your item must be unused and in the same condition that you received it.</p>
             
             {/* --- END TERMS OF SERVICE CONTENT --- */}
           </div>
