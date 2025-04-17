@@ -79,7 +79,7 @@ const FormField = ({
           />
         )}
       </div>
-      {error && <p className={`text-sm text-[${COLORS.error}] mt-1.5`}>{error.message}</p>}
+      {error && <p className={`text-sm text-red-700 mt-1.5`}>{error.message}</p>}
     </div>
   );
 };
