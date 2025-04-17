@@ -1,27 +1,14 @@
 import { COLORS } from '@/lib/constants';
 import Footer from '@/components/Footer';
+import Header from '@/components/Header';
 import Link from 'next/link';
 import Logo from '@/components/Logo';
 
 export default function TermsOfService() {
   return (
     <main className="min-h-screen bg-[#fafaf8]">
-      {/* Navigation */}
-      <nav className={`fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-lg border-b border-[${COLORS.dark}]/10`}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-20">
-            <Link href="/">
-              <Logo />
-            </Link>
-            <Link
-              href="/"
-              className={`bg-[${COLORS.primary}] text-white px-4 sm:px-6 py-2 sm:py-2.5 rounded-full hover:opacity-90 transition-all duration-300 font-medium`}
-            >
-              Back to Home
-            </Link>
-          </div>
-        </div>
-      </nav>
+      {/* Replace Navigation with Header */}
+      <Header />
 
       {/* Main Content Wrapper with Padding for Fixed Header */}
       <div className="pt-20"> 
