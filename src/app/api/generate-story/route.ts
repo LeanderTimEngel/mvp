@@ -90,7 +90,7 @@ export async function POST(request: Request) {
 
     const audioBuffer = Buffer.from(await audioResponse.arrayBuffer());
 
-    const { data: emailData, error: emailError } = await resend.emails.send({
+    const { error: emailError } = await resend.emails.send({
       from: process.env.RESEND_FROM_EMAIL!, 
       to: parentEmail,
       subject: `Your Personalized ${storyCategory} Story for ${childName}`,
