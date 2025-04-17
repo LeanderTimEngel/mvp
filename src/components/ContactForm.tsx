@@ -4,17 +4,17 @@ import { useState } from 'react';
 import { toast } from 'react-hot-toast';
 import { COLORS } from '@/lib/constants';
 
-// Simple Accordion Component for FAQs (moved here as it uses useState)
+// Simple Accordion Component for FAQs
 const AccordionItem = ({ title, children }: { title: string, children: React.ReactNode }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
     <div className="border-b border-gray-200 py-4">
       <button
-        className="flex justify-between items-center w-full text-left focus:outline-none"
+        className="flex justify-between items-center w-full text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[${COLORS.primary}]/50 rounded-md p-1 -m-1"
         onClick={() => setIsOpen(!isOpen)}
       >
-        <span className="text-md font-medium text-gray-800">{title}</span>
+        <span className={`text-md font-medium text-[${COLORS.dark}]`}>{title}</span>
         <svg
           className={`w-5 h-5 text-gray-500 transform transition-transform ${isOpen ? 'rotate-180' : ''}`}
           fill="none" viewBox="0 0 24 24" stroke="currentColor"
@@ -50,17 +50,30 @@ export default function ContactForm() {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // **Placeholder:** Replace with your actual form submission logic (e.g., API call)
     try {
-      // Example: await fetch('/api/contact', { method: 'POST', body: JSON.stringify(formData) });
-      await new Promise(resolve => setTimeout(resolve, 1500)); // Simulate network delay
-      setSubmitted(true);
-      setFormData({ name: '', email: '', subject: '', message: '' });
-      toast.success("Message sent!");
-    } catch {
-      // You might want to log the error to an error reporting service
-      // console.error(error);
-      toast.error('Something went wrong. Please try again later.');
+      // Call the actual API endpoint
+      const response = await fetch('/api/contact', { 
+        method: 'POST', 
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData) 
+      });
+      
+      // Check if the request was successful
+      if (response.ok) {
+        setSubmitted(true); // Show success screen
+        setFormData({ name: '', email: '', subject: '', message: '' }); // Clear form
+        toast.success("Message sent successfully!");
+      } else {
+        // Handle errors from the API
+        const errorData = await response.json();
+        console.error("API Error:", errorData);
+        toast.error(errorData.message || 'Failed to send message. Please try again.');
+      }
+
+    } catch (err) {
+      // Handle network errors or other unexpected issues during fetch
+      console.error("Contact form submission failed:", err);
+      toast.error('Something went wrong. Please check your connection or try again.');
     } finally {
       setIsSubmitting(false);
     }
@@ -72,7 +85,8 @@ export default function ContactForm() {
       <div className="lg:col-span-2 bg-white p-6 sm:p-8 rounded-2xl shadow-lg border border-gray-100">
         {submitted ? (
           <div className="text-center py-12 space-y-4 flex flex-col items-center justify-center min-h-[400px]">
-            <div className={`inline-flex items-center justify-center w-16 h-16 rounded-full bg-[${COLORS.success}]/10 mb-4 animate-pulse`}>
+            {/* Success Icon using COLORS.success */}
+            <div className={`inline-flex items-center justify-center w-16 h-16 rounded-full bg-[${COLORS.success}]/10 mb-4`}>
               <svg className={`w-8 h-8 text-[${COLORS.success}]`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
               </svg>
@@ -81,6 +95,7 @@ export default function ContactForm() {
             <p className="text-gray-600 max-w-md">
               We&apos;ve received your message and will get back to you as soon as possible.
             </p>
+            {/* Button using COLORS.primary */}
             <button
               onClick={() => setSubmitted(false)}
               className={`mt-6 inline-block bg-[${COLORS.primary}]/10 text-[${COLORS.primary}] px-6 py-2 rounded-xl hover:bg-[${COLORS.primary}]/20 transition-colors duration-300 font-medium`}
@@ -96,6 +111,7 @@ export default function ContactForm() {
                 <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
                   Your Name
                 </label>
+                {/* Input using COLORS.primary for focus */}
                 <input
                   id="name"
                   name="name"
@@ -103,7 +119,7 @@ export default function ContactForm() {
                   required
                   value={formData.name}
                   onChange={handleChange}
-                  className={`w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[${COLORS.primary}]/20 focus:border-[${COLORS.primary}] transition duration-150`}
+                  className={`w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[${COLORS.primary}]/30 focus:border-[${COLORS.primary}] transition duration-150 placeholder:text-gray-500 text-gray-900`}
                   placeholder="Enter your name"
                 />
               </div>
@@ -111,6 +127,7 @@ export default function ContactForm() {
                 <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
                   Email Address
                 </label>
+                {/* Input using COLORS.primary for focus */}
                 <input
                   id="email"
                   name="email"
@@ -118,7 +135,7 @@ export default function ContactForm() {
                   required
                   value={formData.email}
                   onChange={handleChange}
-                  className={`w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[${COLORS.primary}]/20 focus:border-[${COLORS.primary}] transition duration-150`}
+                  className={`w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[${COLORS.primary}]/30 focus:border-[${COLORS.primary}] transition duration-150 placeholder:text-gray-500 text-gray-900`}
                   placeholder="Enter your email address"
                 />
               </div>
@@ -127,26 +144,28 @@ export default function ContactForm() {
               <label htmlFor="subject" className="block text-sm font-medium text-gray-700 mb-1">
                 Subject
               </label>
+              {/* Select using COLORS.primary for focus */}
               <select
                 id="subject"
                 name="subject"
                 required
                 value={formData.subject}
                 onChange={handleChange}
-                className={`w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[${COLORS.primary}]/20 focus:border-[${COLORS.primary}] transition duration-150 bg-white appearance-none`}
+                className={`w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[${COLORS.primary}]/30 focus:border-[${COLORS.primary}] transition duration-150 bg-white appearance-none ${formData.subject ? 'text-gray-900' : 'text-gray-500'}`}
               >
-                <option value="">Select a subject</option>
-                <option value="General Inquiry">General Inquiry</option>
-                <option value="Technical Support">Technical Support</option>
-                <option value="Billing Question">Billing Question</option>
-                <option value="Feedback">Feedback</option>
-                <option value="Partnership">Partnership</option>
+                <option value="" className="text-gray-500">Select a subject</option>
+                <option value="General Inquiry" className="text-gray-900">General Inquiry</option>
+                <option value="Technical Support" className="text-gray-900">Technical Support</option>
+                <option value="Billing Question" className="text-gray-900">Billing Question</option>
+                <option value="Feedback" className="text-gray-900">Feedback</option>
+                <option value="Partnership" className="text-gray-900">Partnership</option>
               </select>
             </div>
             <div>
               <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">
                 Message
               </label>
+              {/* Textarea using COLORS.primary for focus */}
               <textarea
                 id="message"
                 name="message"
@@ -154,20 +173,24 @@ export default function ContactForm() {
                 required
                 value={formData.message}
                 onChange={handleChange}
-                className={`w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[${COLORS.primary}]/20 focus:border-[${COLORS.primary}] transition duration-150`}
+                className={`w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[${COLORS.primary}]/30 focus:border-[${COLORS.primary}] transition duration-150 placeholder:text-gray-500 text-gray-900`}
                 placeholder="How can we help you?"
               ></textarea>
             </div>
+            {/* Submit Button using primary gradient */}
             <button
               type="submit"
               disabled={isSubmitting}
-              className={`w-full bg-gradient-to-r from-[${COLORS.primary}] to-[${COLORS.secondary}] text-white py-3 px-6 rounded-xl hover:opacity-90 transition-all duration-300 font-semibold text-lg disabled:opacity-60 disabled:cursor-not-allowed shadow-md hover:shadow-lg`}
+              className={`w-full flex items-center justify-center bg-gradient-to-r from-[${COLORS.primary}] to-[${COLORS.secondary}] text-white px-6 py-3 rounded-xl font-semibold text-lg hover:opacity-95 active:opacity-100 transition-all duration-200 transform hover:scale-[1.01] active:scale-[0.99] disabled:opacity-60 disabled:cursor-not-allowed relative shadow-md hover:shadow-lg active:shadow-sm`}
             >
               {isSubmitting ? (
-                <div className="flex items-center justify-center">
-                  <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin mr-2" />
+                <>
+                  <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                  </svg>
                   <span>Sending...</span>
-                </div>
+                </>
               ) : 'Send Message'}
             </button>
           </form>
@@ -176,11 +199,11 @@ export default function ContactForm() {
 
       {/* Contact Info & FAQ Section */}
       <div className="space-y-8">
-        {/* Contact Information Card */}
+        {/* Contact Information Card - using COLORS.primary */}
         <div className="bg-white p-6 rounded-xl shadow-md border border-gray-100">
           <h3 className={`text-xl font-semibold text-[${COLORS.dark}] mb-5`}>Contact Information</h3>
           <div className="space-y-5">
-            {[ // Array for contact info items
+            {[ 
               {
                 icon: <svg className={`w-5 h-5 text-[${COLORS.primary}]`} fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>,
                 title: "Email",
@@ -198,6 +221,7 @@ export default function ContactForm() {
               }
             ].map((item, index) => (
               <div key={index} className="flex items-start">
+                {/* Icon background using COLORS.primary */}
                 <div className={`flex-shrink-0 bg-[${COLORS.primary}]/10 p-2.5 rounded-lg mr-4 mt-0.5`}>
                   {item.icon}
                 </div>
@@ -213,15 +237,15 @@ export default function ContactForm() {
         {/* FAQ Card */}
         <div className="bg-white p-6 rounded-xl shadow-md border border-gray-100">
           <h3 className={`text-xl font-semibold text-[${COLORS.dark}] mb-2`}>Quick Answers</h3>
-          <AccordionItem title="How quickly will I receive my story?">
-            Stories are typically delivered to your email within 5-10 minutes after generation.
-          </AccordionItem>
-          <AccordionItem title="Can I request changes to my story?">
-            At this time, each story is uniquely generated. If you&apos;re not satisfied, you can create a new one with different details for a new magical adventure!
-          </AccordionItem>
-          <AccordionItem title="How do I cancel my subscription?">
-            You can cancel your subscription at any time from your account dashboard (if applicable) or by contacting our support team via this form or email.
-          </AccordionItem>
+            <AccordionItem title="How quickly will I receive my story?">
+              Stories are typically delivered to your email within 5-10 minutes after generation.
+            </AccordionItem>
+            <AccordionItem title="Can I request changes to my story?">
+              At this time, each story is uniquely generated. If you&apos;re not satisfied, you can create a new one with different details for a new magical adventure!
+            </AccordionItem>
+            <AccordionItem title="How do I cancel my subscription?">
+              You can cancel your subscription at any time from your account dashboard (if applicable) or by contacting our support team via this form or email.
+            </AccordionItem>
         </div>
       </div>
     </div>

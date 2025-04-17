@@ -1,11 +1,20 @@
 'use client';
 
 import StoryForm from '@/components/StoryForm';
+import Image from 'next/image';
 
 // Define props interface
 interface HeroSectionProps {
   openDemo: () => void;
 }
+
+// Placeholder avatar URLs - replace with actual filenames in public/images/
+const avatarUrls = [
+  '/images/customer1.jpeg', // Replace with your actual image path
+  '/images/customer2.jpeg', // Replace with your actual image path
+  '/images/customer3.jpeg', // Replace with your actual image path
+  '/images/customer4.jpeg', // Replace with your actual image path
+];
 
 export default function HeroSection({ openDemo }: HeroSectionProps) { // Destructure openDemo prop
   return (
@@ -32,9 +41,16 @@ export default function HeroSection({ openDemo }: HeroSectionProps) { // Destruc
                 Watch Demo
               </button>
               <div className="flex items-center space-x-2">
-                <div className="flex -space-x-2">
-                  {[1, 2, 3, 4].map((i) => (
-                    <div key={i} className="w-8 h-8 rounded-full bg-[#f2c955]/20 border-2 border-white" />
+                <div className="flex -space-x-2 overflow-hidden">
+                  {avatarUrls.map((url, index) => (
+                    <Image
+                      key={index}
+                      src={url}
+                      alt={`Happy parent ${index + 1}`}
+                      width={32}
+                      height={32}
+                      className="inline-block rounded-full border-2 border-white object-cover"
+                    />
                   ))}
                 </div>
                 <span className="text-sm text-[#171c3f]/80 font-medium">1,000+ Happy Parents</span>
