@@ -3,11 +3,7 @@
 import Link from 'next/link';
 import StoryForm from '@/components/StoryForm';
 
-interface HeroSectionProps {
-  openDemo: () => void;
-}
-
-export default function HeroSection({ openDemo }: HeroSectionProps) {
+export default function HeroSection() {
   return (
     <div className="relative overflow-hidden pt-24 pb-12 sm:pt-32 sm:pb-20">
       <div className="absolute inset-0 bg-gradient-to-r from-[#fa6565]/5 to-[#f2c955]/5" />
@@ -21,25 +17,6 @@ export default function HeroSection({ openDemo }: HeroSectionProps) {
               Create personalized audio stories that spark your child&apos;s imagination.
               Perfect for bedtime, car rides, or any time they need a magical adventure!
             </p>
-            <div className="flex flex-col sm:flex-row gap-4">
-              <Link
-                href="#story-form"
-                className="w-full sm:w-auto bg-[#fa6565] text-white px-6 sm:px-8 py-3 sm:py-4 rounded-xl hover:opacity-90 transition-all duration-300 shadow-lg hover:shadow-xl text-center font-medium"
-              >
-                Create Your Story
-              </Link>
-              <button
-                onClick={openDemo}
-                type="button"
-                className="w-full sm:w-auto group bg-[#f2c955] text-[#171c3f] px-6 sm:px-8 py-3 sm:py-4 rounded-xl hover:opacity-90 transition-all duration-300 shadow-lg hover:shadow-xl flex items-center justify-center gap-2 font-medium"
-              >
-                <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-                Watch Demo
-              </button>
-            </div>
             <div className="flex flex-col sm:flex-row items-center gap-6 sm:gap-8 pt-4">
               <div className="flex items-center space-x-2">
                 <div className="flex -space-x-2">

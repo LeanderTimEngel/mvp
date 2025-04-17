@@ -1,0 +1,18 @@
+<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Book shape with gradient -->
+  <rect width="26" height="30" rx="4" transform="matrix(0.99 0.1 -0.1 0.99 4 0)" fill="url(#paint0_linear)"/>
+  
+  <!-- Book pages -->
+  <rect width="20" height="24" rx="2" transform="matrix(0.99 0.1 -0.1 0.99 7 3)" fill="white" fill-opacity="0.2"/>
+  
+  <!-- Sparkle -->
+  <circle cx="24" cy="5" r="3" fill="#FFC107" />
+  
+  <!-- Gradient definition -->
+  <defs>
+    <linearGradient id="paint0_linear" x1="0" y1="0" x2="26" y2="30" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#fa6565"/>
+      <stop offset="1" stop-color="#f2c955"/>
+    </linearGradient>
+  </defs>
+</svg> 

@@ -1,78 +1,103 @@
+import { COLORS } from '@/lib/constants';
+import Footer from '@/components/Footer';
 import Link from 'next/link';
+import Logo from '@/components/Logo';
 
-export default function TermsPage() {
+export default function TermsOfService() {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-white to-purple-50">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="bg-white rounded-2xl p-8 shadow-framer">
-          <h1 className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-pink-600 mb-8">
-            Terms of Service
-          </h1>
-          
-          <div className="prose prose-purple max-w-none">
-            <p className="text-gray-600 mb-6">Last updated: {new Date().toLocaleDateString()}</p>
-            
-            <h2 className="text-2xl font-semibold text-gray-900 mt-8 mb-4">1. Introduction</h2>
-            <p className="text-lg text-[#171c3f]/80">
-              Welcome to Magical Stories. By accessing or using our service, you agree to be bound by these Terms of Service. Please read them carefully.
-            </p>
-
-            <h2 className="text-2xl font-semibold text-gray-900 mt-8 mb-4">2. Definitions</h2>
-            <ul className="list-disc pl-6 text-gray-700 mb-4">
-              <li>&quot;Service&quot; refers to our AI-powered story generation platform</li>
-              <li>&quot;User&quot; refers to any individual or entity using our Service</li>
-              <li>&quot;Content&quot; refers to any stories, audio, or other materials generated through our Service</li>
-            </ul>
-
-            <h2 className="text-2xl font-semibold text-gray-900 mt-8 mb-4">3. User Responsibilities</h2>
-            <p className="text-gray-700 mb-4">
-              Users are responsible for:
-            </p>
-            <ul className="list-disc pl-6 text-gray-700 mb-4">
-              <li>Providing accurate information for story generation</li>
-              <li>Maintaining the security of their account</li>
-              <li>Using the Service in compliance with all applicable laws</li>
-            </ul>
-
-            <h2 className="text-2xl font-semibold text-gray-900 mt-8 mb-4">4. Intellectual Property</h2>
-            <p className="text-gray-700 mb-4">
-              The Service and its original content, features, and functionality are owned by Magical Stories and are protected by international copyright, trademark, and other intellectual property laws.
-            </p>
-
-            <h2 className="text-2xl font-semibold text-gray-900 mt-8 mb-4">5. Limitation of Liability</h2>
-            <p className="text-gray-700 mb-4">
-              Magical Stories shall not be liable for any indirect, incidental, special, consequential, or punitive damages resulting from your use of or inability to use the Service.
-            </p>
-
-            <h2 className="text-2xl font-semibold text-gray-900 mt-8 mb-4">6. Changes to Terms</h2>
-            <p className="text-lg text-[#171c3f]/80">
-              We reserve the right to modify these terms at any time. We will notify users of any changes by updating the &quot;Last updated&quot; date at the top of these terms.
-            </p>
-            <p className="text-lg text-[#171c3f]/80">
-              Your continued use of the service constitutes acceptance of any changes.
-            </p>
-
-            <h2 className="text-2xl font-semibold text-gray-900 mt-8 mb-4">7. Contact Information</h2>
-            <p className="text-gray-700 mb-4">
-              If you have any questions about these Terms, please contact us at:
-            </p>
-            <p className="text-gray-700">
-              Email: support@magicalstories.com
-            </p>
-
-            <h2 className="text-2xl font-semibold text-gray-900 mt-8 mb-4">8. Additional Terms</h2>
-            <p className="text-lg text-[#171c3f]/80">
-              We&apos;re not responsible for any &quot;magical mishaps&quot; that may occur during story time.
-            </p>
-          </div>
-
-          <div className="mt-12 pt-8 border-t border-gray-200">
-            <Link href="/" className="text-purple-600 hover:text-purple-700 font-medium">
-              ← Back to Home
+    <main className="min-h-screen bg-[#fafaf8]">
+      {/* Navigation */}
+      <nav className={`fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-lg border-b border-[${COLORS.dark}]/10`}>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-between items-center h-20">
+            <Link href="/">
+              <Logo />
+            </Link>
+            <Link
+              href="/"
+              className={`bg-[${COLORS.primary}] text-white px-4 sm:px-6 py-2 sm:py-2.5 rounded-full hover:opacity-90 transition-all duration-300 font-medium`}
+            >
+              Back to Home
             </Link>
           </div>
         </div>
+      </nav>
+
+      {/* Main Content Wrapper with Padding for Fixed Header */}
+      <div className="pt-20"> 
+        
+        {/* Hero Section */}
+        <div className="relative pt-24 pb-16 bg-gradient-to-b from-white to-[#fafaf8]">
+          <div className="absolute inset-0 bg-gradient-to-r from-[#fa6565]/5 to-[#f2c955]/5 opacity-50"></div>
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+            <h1 className={`text-4xl sm:text-5xl font-bold text-[${COLORS.dark}] mb-4`}>Terms of Service</h1>
+            <p className="text-xl text-gray-600 mb-6">Please read these terms carefully before using our service.</p>
+            <div className="w-24 h-1.5 bg-gradient-to-r from-[${COLORS.primary}] to-[${COLORS.secondary}] mx-auto rounded-full"></div>
+          </div>
+        </div>
+
+        {/* Policy Content */}
+        <div className="py-16 sm:py-20">
+          <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 prose prose-lg text-gray-700 prose-headings:text-[${COLORS.dark}] prose-headings:font-semibold prose-a:text-[${COLORS.primary}] hover:prose-a:text-[${COLORS.primary}]/80 prose-strong:text-gray-800">
+            {/* --- START TERMS OF SERVICE CONTENT --- */}
+            {/* Existing content will be placed here */}
+            <p>Effective Date: [Insert Date]</p>
+
+            <p>Please read these Terms of Service (&quot;Terms&quot;) carefully before using the Magical Stories website and services (the &quot;Service&quot;) operated by Magical Stories (&quot;us,&quot; &quot;we,&quot; or &quot;our&quot;).</p>
+            
+            <p>Your access to and use of the Service is conditioned upon your acceptance of and compliance with these Terms. These Terms apply to all visitors, users, and others who wish to access or use the Service.</p>
+            
+            <p>By accessing or using the Service, you agree to be bound by these Terms. If you disagree with any part of the terms, then you do not have permission to access the Service.</p>
+
+            <h2>1. Service Description</h2>
+            <p>Magical Stories provides a service that generates personalized audio stories for children based on user-provided details. Stories are delivered digitally via email.</p>
+
+            <h2>2. User Accounts and Responsibilities</h2>
+            <p>If the Service requires account creation, you must provide accurate and complete information. You are responsible for maintaining the confidentiality of your account and password and for restricting access to your computer. You agree to accept responsibility for all activities that occur under your account or password.</p>
+            <p>You must be at least 18 years old to use this Service or have the permission of a parent or legal guardian.</p>
+
+            <h2>3. Purchases and Payments</h2>
+            <p>If you wish to purchase any product or service made available through the Service (&quot;Purchase&quot;), you may be asked to supply certain information relevant to your Purchase, including payment information. We use third-party payment processors (e.g., Stripe) to handle transactions securely.</p>
+            <p>Prices for our products are subject to change without notice. We reserve the right at any time to modify or discontinue the Service (or any part or content thereof) without notice.</p>
+            <p>Please refer to our <Link href="/refund">Refund Policy</Link> for information about refunds.</p>
+
+            <h2>4. Content and Intellectual Property</h2>
+            <p>The stories generated by the Service are for your personal, non-commercial use only. You may not reproduce, distribute, modify, create derivative works of, publicly display, publicly perform, republish, download, store, or transmit any of the material provided through the Service, except for your personal use.</p>
+            <p>The Service and its original content (excluding user-provided personalization details), features, and functionality are and will remain the exclusive property of Magical Stories and its licensors.</p>
+
+            <h2>5. Prohibited Uses</h2>
+            <p>You may use the Service only for lawful purposes and in accordance with these Terms. You agree not to use the Service:</p>
+            <ul>
+              <li>In any way that violates any applicable national or international law or regulation.</li>
+              <li>To exploit, harm, or attempt to exploit or harm minors in any way.</li>
+              <li>To transmit, or procure the sending of, any advertising or promotional material, including any &quot;junk mail,&quot; &quot;chain letter,&quot; &quot;spam,&quot; or any other similar solicitation.</li>
+              <li>To impersonate or attempt to impersonate Magical Stories, an employee, another user, or any other person or entity.</li>
+              <li>To engage in any other conduct that restricts or inhibits anyone&apos;s use or enjoyment of the Service, or which, as determined by us, may harm Magical Stories or users of the Service or expose them to liability.</li>
+              <li>To interfere with the proper working of the Service, including using any device, software, or routine that interferes with it.</li>
+            </ul>
+
+            <h2>6. Disclaimer of Warranties; Limitation of Liability</h2>
+            <p>The Service is provided on an &quot;AS IS&quot; and &quot;AS AVAILABLE&quot; basis. We do not warrant that the Service will be uninterrupted, timely, secure, or error-free. We do not warrant that the results obtained from the use of the Service will be accurate or reliable.</p>
+            <p>In no case shall Magical Stories, our directors, officers, employees, affiliates, agents, contractors, interns, suppliers, service providers or licensors be liable for any injury, loss, claim, or any direct, indirect, incidental, punitive, special, or consequential damages of any kind, arising from your use of the Service or any products procured using the Service.</p>
+
+            <h2>7. Indemnification</h2>
+            <p>You agree to indemnify, defend and hold harmless Magical Stories and our parent, subsidiaries, affiliates, partners, officers, directors, agents, contractors, licensors, service providers, subcontractors, suppliers, interns and employees, from any claim or demand, including reasonable attorneys' fees, made by any third-party due to or arising out of your breach of these Terms or your violation of any law or the rights of a third-party.</p>
+
+            <h2>8. Governing Law</h2>
+            <p>These Terms shall be governed and construed in accordance with the laws of [Your Jurisdiction, e.g., California, USA], without regard to its conflict of law provisions.</p>
+
+            <h2>9. Changes to Terms</h2>
+            <p>We reserve the right, at our sole discretion, to modify or replace these Terms at any time. We will provide notice of any significant changes. By continuing to access or use our Service after any revisions become effective, you agree to be bound by the revised terms.</p>
+
+            <h2>10. Contact Us</h2>
+            <p>If you have any questions about these Terms, please contact us via our <Link href="/contact">Contact Page</Link>.</p>
+            
+            {/* --- END TERMS OF SERVICE CONTENT --- */}
+          </div>
+        </div>
       </div>
-    </div>
+
+      <Footer />
+    </main>
   );
 } 

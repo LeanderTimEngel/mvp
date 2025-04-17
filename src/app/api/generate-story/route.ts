@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server';
 import OpenAI from 'openai';
 import { Resend } from 'resend';
 import { z } from 'zod';
+import { STORY_CATEGORIES, STORY_LENGTH_WORDS, COLORS } from '@/lib/constants';
 
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
@@ -9,23 +10,7 @@ const openai = new OpenAI({
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
-const STORY_CATEGORIES = [
-  'Adventure',
-  'Fantasy',
-  'Animals',
-  'Space',
-  'Superheroes',
-  'Princesses',
-  'Dinosaurs',
-  'Pirates',
-] as const;
 const STORY_LENGTH_KEYS = ['short', 'medium', 'long'] as const;
-
-const STORY_LENGTH_WORDS = {
-  short: 200,
-  medium: 400,
-  long: 600,
-};
 
 const StoryRequestSchema = z.object({
   childName: z.string().min(1, "Child's name is required").max(50),
@@ -96,13 +81,13 @@ export async function POST(request: Request) {
       subject: `Your Personalized ${storyCategory} Story for ${childName}`,
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-          <h1 style="color: #4F46E5;">Your Magical Story is Ready!</h1>
+          <h1 style="color: ${COLORS.primary};">Your Magical Story is Ready!</h1>
           <p>Dear Parent,</p>
-          <p>Here&apos;s your personalized ${storyCategory.toLowerCase()} story for ${childName}!</p>
+          <p>Here's your personalized ${storyCategory.toLowerCase()} story for ${childName}!</p>
           <div style="background-color: #F9FAFB; padding: 20px; border-radius: 8px; margin: 20px 0;">
             <p style="white-space: pre-wrap;">${story}</p>
           </div>
-          <p>We&apos;ve also attached an audio version of the story for your convenience.</p>
+          <p>We've also attached an audio version of the story for your convenience.</p>
           <p>Enjoy the magical journey!</p>
           <p>Best regards,<br>The Story Team</p>
         </div>
