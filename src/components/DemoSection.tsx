@@ -1,7 +1,8 @@
 'use client';
 
-import { COLORS } from '@/lib/constants';
-import Image from 'next/image';
+// Removing unused imports
+// import { COLORS } from '@/lib/constants';
+// import Image from 'next/image';
 
 interface DemoSectionProps {
   openDemo: () => void;

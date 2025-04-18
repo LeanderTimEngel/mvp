@@ -34,7 +34,7 @@ export default function Footer() {
               <Logo />
             </div>
             <p className="text-gray-300 text-sm leading-relaxed max-w-xs">
-              Creating magical moments at bedtime with personalized stories that spark your child's imagination.
+              Creating magical moments at bedtime with personalized stories that spark your child&apos;s imagination.
             </p>
             {/* Newsletter Signup */}
             {/*<div className="pt-2">
