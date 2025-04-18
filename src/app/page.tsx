@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Header from '@/components/Header';
 import HeroSection from '@/components/HeroSection';
 import FeaturesSection from '@/components/FeaturesSection';
@@ -10,6 +10,7 @@ import CtaSection from '@/components/CtaSection';
 import Footer from '@/components/Footer';
 import DemoModal from '@/components/DemoModal';
 import DemoSection from '@/components/DemoSection';
+import ExampleStoriesSection from '@/components/ExampleStoriesSection';
 
 export default function Home() {
   const [isDemoOpen, setIsDemoOpen] = useState(false);
@@ -17,8 +18,19 @@ export default function Home() {
   const handleOpenDemo = () => setIsDemoOpen(true);
   const handleCloseDemo = () => setIsDemoOpen(false);
 
-  // // Effect to handle body scroll and Escape key is now inside DemoModal
-  // useEffect(() => { ... }, [showDemo]); // Keep this comment or remove if preferred
+  // Close modal with escape key
+  useEffect(() => {
+    const handleEsc = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        setIsDemoOpen(false);
+      }
+    };
+    window.addEventListener('keydown', handleEsc);
+
+    return () => {
+      window.removeEventListener('keydown', handleEsc);
+    };
+  }, []);
 
   return (
     <main className="min-h-screen bg-[#fafaf8]">
@@ -29,6 +41,7 @@ export default function Home() {
       <HeroSection openDemo={handleOpenDemo} />
       <FeaturesSection />
       <DemoSection openDemo={handleOpenDemo} />
+      <ExampleStoriesSection />
       <TestimonialsSection />
       <PricingSection />
       <CtaSection />

@@ -39,21 +39,26 @@ export default function Header({ isHomePage = false }: HeaderProps) {
           {/* Conditional Navigation Links/Buttons */}
           {isHomePage ? (
             // Navigation for Home Page
-            <div className="flex items-center space-x-4 sm:space-x-8">
+            <div className="flex items-center">
+              {/* Desktop Navigation */}
               <div className="hidden sm:flex items-center space-x-8">
                 <a href="#features" className={`text-[${COLORS.dark}] hover:text-[${COLORS.primary}] transition-colors duration-200 font-medium px-1 py-1`}>Features</a>
                 <a href="#testimonials" className={`text-[${COLORS.dark}] hover:text-[${COLORS.primary}] transition-colors duration-200 font-medium px-1 py-1`}>Testimonials</a>
                 <a href="#pricing" className={`text-[${COLORS.dark}] hover:text-[${COLORS.primary}] transition-colors duration-200 font-medium px-1 py-1`}>Pricing</a>
+                
+                {/* Desktop "Get Started" button - only visible on desktop */}
+                <Link
+                  href="#story-form"
+                  className={`bg-gradient-to-r from-[${COLORS.primary}] to-[${COLORS.secondary}] text-white px-5 sm:px-6 py-2.5 rounded-full hover:opacity-90 transition-opacity duration-200 font-semibold shadow-sm text-sm sm:text-base`}
+                >
+                  Get Started
+                </Link>
               </div>
-              <Link
-                href="#story-form"
-                className={`bg-gradient-to-r from-[${COLORS.primary}] to-[${COLORS.secondary}] text-white px-5 sm:px-6 py-2.5 rounded-full hover:opacity-90 transition-opacity duration-200 font-semibold shadow-sm text-sm sm:text-base`}
-              >
-                Get Started
-              </Link>
+              
+              {/* Mobile Hamburger Menu Button */}
               <button 
                 onClick={toggleMobileMenu}
-                className="sm:hidden flex flex-col justify-center items-center ml-2 z-50"
+                className="sm:hidden flex flex-col justify-center items-center z-50"
                 aria-label="Toggle mobile menu"
               >
                 <span className={`block w-6 h-0.5 bg-gray-800 transition-all duration-300 mb-1.5 ${mobileMenuOpen ? 'rotate-45 translate-y-2' : ''}`}></span>
