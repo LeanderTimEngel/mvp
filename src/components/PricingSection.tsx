@@ -17,7 +17,7 @@ export default function PricingSection() {
             <h3 className={`text-xl font-semibold text-[${COLORS.dark}] mb-4`}>One-Time Story</h3>
             <div className="mb-2">
               <p className="text-3xl sm:text-4xl font-bold text-gray-900">
-                $1.99 <span className="text-base font-normal text-gray-500">/ story</span>
+                $0.99 <span className="text-base font-normal text-gray-500">/ story</span>
               </p>
               <p className={`text-lg font-semibold text-green-600 mt-1`}>Currently Free!</p>
             </div>
@@ -54,7 +54,7 @@ export default function PricingSection() {
               <span className="bg-yellow-200 text-yellow-800 text-xs font-semibold px-2.5 py-0.5 rounded-full uppercase">Coming Soon</span>
             </div>
             <p className="text-3xl sm:text-4xl font-bold text-gray-900 mb-2">
-              $9.99 <span className="text-base font-normal text-gray-500">/ month</span>
+              $4.99 <span className="text-base font-normal text-gray-500">/ month</span>
             </p>
             <p className="text-gray-600 mb-6 text-sm">Best value for unlimited story creation.</p>
             

@@ -17,6 +17,7 @@ const config: Config = {
         'scale-in': 'scaleIn 0.3s ease-out',
         'blob': 'blob 7s infinite',
         'gradient': 'gradient 8s linear infinite',
+        'gradient-pulse': 'gradientPulse 3s ease infinite alternate',
       },
       keyframes: {
         fadeIn: {
@@ -45,6 +46,10 @@ const config: Config = {
           '0%': { backgroundPosition: '0% 50%' },
           '50%': { backgroundPosition: '100% 50%' },
           '100%': { backgroundPosition: '0% 50%' },
+        },
+        gradientPulse: {
+          '0%': { opacity: '0.8', transform: 'scale(1)' },
+          '100%': { opacity: '1', transform: 'scale(1.05)' },
         },
       },
       backgroundImage: {
