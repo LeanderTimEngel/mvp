@@ -11,9 +11,9 @@ export default function PricingSection() {
         </div>
 
         {/* Pricing Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-4xl mx-auto">
           {/* One-Time Story Card */}
-          <div className="bg-white/80 backdrop-blur-md rounded-2xl shadow-lg border border-gray-100 p-6 sm:p-8 flex flex-col">
+          <div className="group bg-white/80 backdrop-blur-md rounded-2xl shadow-lg border border-gray-100 p-6 sm:p-8 flex flex-col transform transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:bg-white/90">
             <h3 className={`text-xl font-semibold text-[${COLORS.dark}] mb-4`}>One-Time Story</h3>
             <div className="mb-2">
               <p className="text-3xl sm:text-4xl font-bold text-gray-900">
@@ -47,11 +47,11 @@ export default function PricingSection() {
           </div>
 
           {/* Monthly Subscription Card - Adding Coming Soon */}
-          <div className="bg-white/80 backdrop-blur-md rounded-2xl shadow-lg border border-gray-100 p-6 sm:p-8 flex flex-col relative overflow-hidden">
+          <div className="group bg-white/80 backdrop-blur-md rounded-2xl shadow-lg border border-gray-100 p-6 sm:p-8 flex flex-col relative overflow-hidden transform transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:bg-white/90">
             {/* Badge added here */}
             <div className="flex justify-between items-start mb-4">
               <h3 className={`text-xl font-semibold text-[${COLORS.dark}]`}>Monthly Subscription</h3>
-              <span className="bg-yellow-200 text-yellow-800 text-xs font-semibold px-2.5 py-0.5 rounded-full uppercase">Coming Soon</span>
+              <span className="bg-yellow-200 text-yellow-800 text-xs font-semibold px-3 py-0.5 rounded-full uppercase">Coming Soon</span>
             </div>
             <p className="text-3xl sm:text-4xl font-bold text-gray-900 mb-2">
               $4.99 <span className="text-base font-normal text-gray-500">/ month</span>
@@ -81,6 +81,39 @@ export default function PricingSection() {
               onClick={(e) => e.preventDefault()}
             >
               Notify Me (Coming Soon)
+            </Link>
+          </div>
+
+          {/* Ultra Premium Card */}
+          <div className="group bg-white/80 backdrop-blur-md rounded-2xl shadow-lg border border-gray-100 p-6 sm:p-8 flex flex-col transform transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:bg-white/90">
+            <div className="flex justify-between items-start mb-4">
+              <h3 className={`text-xl font-semibold text-[${COLORS.dark}]`}>Ultra Premium</h3>
+              <span className="bg-indigo-200 text-indigo-800 text-xs font-semibold px-3 py-0.5 rounded-full uppercase">On Request</span>
+            </div>
+            <div className="mb-2">
+              <p className="text-3xl sm:text-4xl font-bold text-gray-900">
+                On Request
+              </p>
+            </div>
+            <p className="text-gray-600 mb-6 text-sm">Experience stories in a personalized voice crafted just for you.</p>
+            <ul className="space-y-3 text-gray-700 mb-8 flex-grow">
+              {[
+                { icon: "🎙️", text: "Custom voice narration" },
+                { icon: "💼", text: "Exclusive storyline design" },
+                { icon: "🔒", text: "Limited availability" },
+                { icon: "⏳", text: "On-demand scheduling" },
+              ].map((item, index) => (
+                <li key={index} className="flex items-start">
+                  <span className="text-lg mr-2.5 mt-0.5">{item.icon}</span>
+                  <span>{item.text}</span>
+                </li>
+              ))}
+            </ul>
+            <Link
+              href="/ultra-premium"
+              className={`w-full text-center bg-gradient-to-r from-[${COLORS.primary}] to-[${COLORS.secondary}] text-white py-3 px-6 rounded-xl hover:opacity-90 transition-all duration-300 font-semibold shadow-md hover:shadow-lg`}
+            >
+              Request Now
             </Link>
           </div>
         </div>
