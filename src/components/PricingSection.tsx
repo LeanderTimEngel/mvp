@@ -51,7 +51,7 @@ export default function PricingSection() {
             {/* Badge added here */}
             <div className="flex justify-between items-start mb-4">
               <h3 className={`text-xl font-semibold text-[${COLORS.dark}]`}>Monthly Subscription</h3>
-              <span className="bg-yellow-200 text-yellow-800 text-xs font-semibold px-3 py-0.5 rounded-full uppercase">Coming Soon</span>
+              <span className="bg-yellow-200 text-yellow-800 text-sm font-semibold px-4 py-1 rounded-full uppercase shadow-sm">Coming Soon</span>
             </div>
             <p className="text-3xl sm:text-4xl font-bold text-gray-900 mb-2">
               $4.99 <span className="text-base font-normal text-gray-500">/ month</span>
@@ -88,7 +88,7 @@ export default function PricingSection() {
           <div className="group bg-white/80 backdrop-blur-md rounded-2xl shadow-lg border border-gray-100 p-6 sm:p-8 flex flex-col transform transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:bg-white/90">
             <div className="flex justify-between items-start mb-4">
               <h3 className={`text-xl font-semibold text-[${COLORS.dark}]`}>Ultra Premium</h3>
-              <span className="bg-indigo-200 text-indigo-800 text-xs font-semibold px-3 py-0.5 rounded-full uppercase">On Request</span>
+              <span className="bg-indigo-200 text-indigo-800 text-sm font-semibold px-4 py-1 rounded-full uppercase shadow-sm">On Request</span>
             </div>
             <div className="mb-2">
               <p className="text-3xl sm:text-4xl font-bold text-gray-900">
