@@ -6,7 +6,7 @@ import UltraPremiumForm from '@/components/UltraPremiumForm';
 import Image from 'next/image';
 
 export const metadata: Metadata = {
-  title: "Ultra Premium | Parents' Voices | Magical Stories",
+  title: "Ultra Premium | Parents&apos; Voices | Magical Stories",
   description: "Give your child the ultimate storytelling experience with stories narrated in your own voice.",
 };
 
@@ -29,7 +29,7 @@ export default function UltraPremiumPage() {
             </div>
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 mb-5">Stories in Your <span className="text-[#fa6565]">Voice</span></h1>
             <p className="text-xl text-gray-600 mb-8">
-              The most magical bedtime experience - personalized stories narrated in <span className="font-semibold">your own voice</span>, creating a special connection even when you can't be there.
+              The most magical bedtime experience - personalized stories narrated in <span className="font-semibold">your own voice</span>, creating a special connection even when you can&apos;t be there.
             </p>
             <div className="w-24 h-1.5 bg-gradient-to-r from-[#fa6565] to-[#f2c955] mx-auto rounded-full mb-12"></div>
             
@@ -56,9 +56,9 @@ export default function UltraPremiumPage() {
             <div className="lg:grid lg:grid-cols-2 lg:gap-16 items-start">
               {/* Features & Process List */}
               <div className="mb-16 lg:mb-0 lg:pr-8">
-                <h2 className={`text-3xl sm:text-4xl font-semibold text-[${COLORS.dark}] mb-8`}>Why Parents' Voices Matter</h2>
+                <h2 className={`text-3xl sm:text-4xl font-semibold text-[${COLORS.dark}] mb-8`}>Why Parents&apos; Voices Matter</h2>
                 <p className="text-lg text-gray-700 mb-12">
-                  Children find comfort and security in their parents' voices. Our Ultra Premium service lets you create an emotional connection through storytelling, even when you can't be physically present.
+                  Children find comfort and security in their parents&apos; voices. Our Ultra Premium service lets you create an emotional connection through storytelling, even when you can&apos;t be physically present.
                 </p>
                 
                 <h3 className={`text-2xl font-semibold text-[${COLORS.dark}] mb-6`}>How It Works</h3>
@@ -93,7 +93,7 @@ export default function UltraPremiumPage() {
                 
                 <div className="mt-12 p-6 bg-gradient-to-r from-blue-50 to-cyan-50 rounded-xl border border-blue-100 shadow-sm transition-all duration-500 hover:shadow-md">
                   <p className="text-base italic text-blue-800">
-                    "My daughter's face lights up when she hears my voice telling her stories. As a military mom who deploys, this service has been incredibly meaningful for our family."
+                    "My daughter&apos;s face lights up when she hears my voice telling her stories. As a military mom who deploys, this service has been incredibly meaningful for our family."
                   </p>
                   <p className="text-sm font-semibold text-blue-900 mt-3">— Amanda T., Navy Lieutenant</p>
                 </div>
