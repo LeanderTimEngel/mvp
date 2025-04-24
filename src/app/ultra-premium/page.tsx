@@ -93,7 +93,7 @@ export default function UltraPremiumPage() {
                 
                 <div className="mt-12 p-6 bg-gradient-to-r from-blue-50 to-cyan-50 rounded-xl border border-blue-100 shadow-sm transition-all duration-500 hover:shadow-md">
                   <p className="text-base italic text-blue-800">
-                    "My daughter&apos;s face lights up when she hears my voice telling her stories. As a military mom who deploys, this service has been incredibly meaningful for our family."
+                    &quot;My daughter&apos;s face lights up when she hears my voice telling her stories. As a military mom who deploys, this service has been incredibly meaningful for our family.&quot;
                   </p>
                   <p className="text-sm font-semibold text-blue-900 mt-3">— Amanda T., Navy Lieutenant</p>
                 </div>

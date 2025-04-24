@@ -140,7 +140,7 @@ export default function UltraPremiumForm() {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
             <div>
               <label htmlFor="childName" className="block text-sm font-medium text-gray-700 mb-1">
-                Child's Name*
+                Child&apos;s Name*
               </label>
               <input
                 id="childName"
@@ -155,7 +155,7 @@ export default function UltraPremiumForm() {
             </div>
             <div>
               <label htmlFor="childAge" className="block text-sm font-medium text-gray-700 mb-1">
-                Child's Age*
+                Child&apos;s Age*
               </label>
               <input
                 id="childAge"
@@ -212,7 +212,7 @@ export default function UltraPremiumForm() {
               value={formData.additionalInfo}
               onChange={handleChange}
               className={`w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[${COLORS.primary}]/40 focus:border-[${COLORS.primary}] hover:border-gray-400 transition-all duration-200 placeholder:text-gray-400 text-gray-900 bg-white bg-opacity-90 shadow-sm hover:shadow resize-none`}
-              placeholder="Tell us about your child's interests, favorite stories, your schedule availability for voice recording, etc."
+              placeholder="Tell us about your child&apos;s interests, favorite stories, your schedule availability for voice recording, etc."
             ></textarea>
           </div>
           
