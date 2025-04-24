@@ -25,7 +25,6 @@ interface FormFieldProps {
   type: 'text' | 'number' | 'email' | 'select';
   icon: string;
   iconColor: string;
-  borderColor: string;
   focusColor: string;
   placeholder: string;
   register: UseFormRegister<FormData>;
@@ -36,12 +35,12 @@ interface FormFieldProps {
 }
 
 const FormField = ({ 
-  id, label, type, icon, iconColor, borderColor, focusColor, 
+  id, label, type, icon, iconColor, focusColor, 
   placeholder, register, error, options = [], attrs = {}, valueAsNumber = false
 }: FormFieldProps) => {
   
   const baseInputClasses = `block w-full pl-10 pr-3 py-2.5 border rounded-xl bg-white/50 text-[${COLORS.dark}] placeholder-[${COLORS.dark}]/40 transition duration-150 ease-in-out`;
-  const errorBorder = error ? `border-[${COLORS.error}]` : borderColor;
+  const errorBorder = error ? `border-[${COLORS.error}]` : 'border-gray-200/10';
   const registerOptions = valueAsNumber ? { valueAsNumber: true } : {};
 
   return (
@@ -165,14 +164,14 @@ export default function StoryForm() {
   // Form field configuration using constants and types
   // We define the configuration here, but the actual register function is passed down
   const formFields: Omit<FormFieldProps, 'register' | 'error'>[] = [
-    { id: 'childName', label: "Child's Name", type: 'text', icon: '👶', iconColor: `text-[${COLORS.secondary}]`, borderColor: `border-[${COLORS.secondary}]/20`, focusColor: `focus:ring-[${COLORS.primary}]/20 focus:border-[${COLORS.primary}]`, placeholder: "E.g., Lily" },
-    { id: 'childAge', label: "Child's Age", type: 'number', icon: '🎂', iconColor: `text-[${COLORS.success}]`, borderColor: `border-[${COLORS.success}]/20`, focusColor: `focus:ring-[${COLORS.success}]/20 focus:border-[${COLORS.success}]`, placeholder: "4-10", attrs: { min: 4, max: 10 }, valueAsNumber: true },
-    { id: 'favoriteCharacter', label: "Favorite Character", type: 'text', icon: '🌟', iconColor: `text-[${COLORS.primary}]`, borderColor: `border-[${COLORS.primary}]/20`, focusColor: `focus:ring-[${COLORS.primary}]/20 focus:border-[${COLORS.primary}]`, placeholder: "E.g., Sparkle the Unicorn" },
-    { id: 'hobby', label: "Favorite Hobby", type: 'text', icon: '🎨', iconColor: `text-[${COLORS.secondary}]`, borderColor: `border-[${COLORS.secondary}]/20`, focusColor: `focus:ring-[${COLORS.secondary}]/20 focus:border-[${COLORS.secondary}]`, placeholder: "E.g., Painting rainbows" },
-    { id: 'storyCategory', label: "Story Category", type: 'select', icon: '📚', iconColor: `text-[${COLORS.success}]`, borderColor: `border-[${COLORS.success}]/20`, focusColor: `focus:ring-[${COLORS.success}]/20 focus:border-[${COLORS.success}]`, options: STORY_CATEGORIES.map(c => ({ value: c, label: c })), placeholder: "Select a category" },
+    { id: 'childName', label: "Child's Name", type: 'text', icon: '👶', iconColor: `text-[${COLORS.secondary}]`, focusColor: `focus:ring-[${COLORS.primary}]/20 focus:border-[${COLORS.primary}]`, placeholder: "E.g., Lily" },
+    { id: 'childAge', label: "Child's Age", type: 'number', icon: '🎂', iconColor: `text-[${COLORS.success}]`, focusColor: `focus:ring-[${COLORS.success}]/20 focus:border-[${COLORS.success}]`, placeholder: "4-10", attrs: { min: 4, max: 10 }, valueAsNumber: true },
+    { id: 'favoriteCharacter', label: "Favorite Character", type: 'text', icon: '🌟', iconColor: `text-[${COLORS.primary}]`, focusColor: `focus:ring-[${COLORS.primary}]/20 focus:border-[${COLORS.primary}]`, placeholder: "E.g., Sparkle the Unicorn" },
+    { id: 'hobby', label: "Favorite Hobby", type: 'text', icon: '🎨', iconColor: `text-[${COLORS.secondary}]`, focusColor: `focus:ring-[${COLORS.secondary}]/20 focus:border-[${COLORS.secondary}]`, placeholder: "E.g., Painting rainbows" },
+    { id: 'storyCategory', label: "Story Category", type: 'select', icon: '📚', iconColor: `text-[${COLORS.success}]`, focusColor: `focus:ring-[${COLORS.success}]/20 focus:border-[${COLORS.success}]`, options: STORY_CATEGORIES.map(c => ({ value: c, label: c })), placeholder: "Select a category" },
     // Correcting the type for STORY_LENGTHS options
-    { id: 'storyLength', label: "Story Length", type: 'select', icon: '⏱️', iconColor: `text-[${COLORS.primary}]`, borderColor: `border-[${COLORS.primary}]/20`, focusColor: `focus:ring-[${COLORS.primary}]/20 focus:border-[${COLORS.primary}]`, options: STORY_LENGTHS.map(l => ({ value: l.value, label: l.label })), placeholder: "Select length" },
-    { id: 'parentEmail', label: "Parent's Email", type: 'email', icon: '✉️', iconColor: `text-[${COLORS.secondary}]`, borderColor: `border-[${COLORS.secondary}]/20`, focusColor: `focus:ring-[${COLORS.secondary}]/20 focus:border-[${COLORS.secondary}]`, placeholder: "Where should we send the story?" },
+    { id: 'storyLength', label: "Story Length", type: 'select', icon: '⏱️', iconColor: `text-[${COLORS.primary}]`, focusColor: `focus:ring-[${COLORS.primary}]/20 focus:border-[${COLORS.primary}]`, options: STORY_LENGTHS.map(l => ({ value: l.value, label: l.label })), placeholder: "Select length" },
+    { id: 'parentEmail', label: "Parent's Email", type: 'email', icon: '✉️', iconColor: `text-[${COLORS.secondary}]`, focusColor: `focus:ring-[${COLORS.secondary}]/20 focus:border-[${COLORS.secondary}]`, placeholder: "Where should we send the story?" },
   ];
 
   return (
