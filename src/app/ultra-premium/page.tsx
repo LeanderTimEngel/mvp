@@ -11,6 +11,19 @@ export const metadata: Metadata = {
 };
 
 export default function UltraPremiumPage() {
+  // Process steps and benefits data
+  const steps = [
+    { number: '1', text: 'You record voice samples using our simple guide' },
+    { number: '2', text: 'Our technology creates a perfect voice model' },
+    { number: '3', text: 'Choose from our library of customizable stories' },
+    { number: '4', text: 'Receive finished stories narrated in your voice' },
+  ];
+  const benefits = [
+    { icon: '🎙️', text: 'Stories narrated in your own voice' },
+    { icon: '💫', text: 'Personalized storylines featuring your child' },
+    { icon: '🔄', text: 'Update your voice model anytime' },
+    { icon: '🎁', text: 'Perfect gift for parents who travel or live apart' },
+  ];
   return (
     <main className="min-h-screen bg-[#fafaf8]">
       {/* Navigation */}
@@ -20,9 +33,8 @@ export default function UltraPremiumPage() {
       <div className="pt-20">
         <div className="relative pt-32 pb-24 bg-gradient-to-b from-white to-[#fafaf8] overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-r from-[#fa6565]/5 to-[#f2c955]/5 opacity-40"></div>
-          {/* Premium decorative elements */}
-          <div className="absolute top-12 left-12 w-72 h-72 bg-gradient-to-r from-purple-300/15 to-indigo-300/15 rounded-full blur-3xl"></div>
-          <div className="absolute bottom-12 right-12 w-72 h-72 bg-gradient-to-r from-pink-300/15 to-red-300/15 rounded-full blur-3xl"></div>
+          {/* Decorative background gradient */}
+          {/* removed individual circle elements for simpler markup */}
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
             <div className="inline-block mb-8 bg-white/80 shadow-md rounded-full">
               <span className="inline-block bg-gradient-to-r from-[#fa6565] to-[#f2c955] text-base font-semibold px-4 py-1.5 rounded-full text-white">Ultra Premium Service</span>
@@ -37,7 +49,7 @@ export default function UltraPremiumPage() {
               <div className="relative w-full max-w-3xl h-72 rounded-2xl overflow-hidden shadow-xl ring-1 ring-gray-200/50">
                 <div className="absolute inset-0 bg-gradient-to-r from-indigo-500/10 to-pink-500/10 z-10"></div>
                 <Image 
-                  src="/images/parent-reading.jpg" 
+                  src="/images/parent-reading.jpg"
                   alt="Parent reading to child" 
                   fill 
                   className="object-cover"
@@ -63,30 +75,20 @@ export default function UltraPremiumPage() {
                 
                 <h3 className={`text-2xl font-semibold text-[${COLORS.dark}] mb-6`}>How It Works</h3>
                 <ol className="space-y-5 text-gray-700 mb-12">
-                  {[
-                    { number: "1", text: "You record voice samples using our simple guide" },
-                    { number: "2", text: "Our technology creates a perfect voice model" },
-                    { number: "3", text: "Choose from our library of customizable stories" },
-                    { number: "4", text: "Receive finished stories narrated in your voice" },
-                  ].map((item, index) => (
-                    <li key={index} className="flex items-center p-2 transition-all duration-300">
-                      <span className="flex items-center justify-center text-white bg-gradient-to-r from-[#fa6565] to-[#f2c955] w-8 h-8 rounded-full mr-4 flex-shrink-0 font-bold text-sm shadow-md">{item.number}</span>
-                      <span className="text-lg pt-1.5">{item.text}</span>
+                  {steps.map((step) => (
+                    <li key={step.number} className="flex items-center p-2 transition-all duration-300">
+                      <span className="flex items-center justify-center text-white bg-gradient-to-r from-[#fa6565] to-[#f2c955] w-8 h-8 rounded-full mr-4 font-bold text-sm shadow-md">{step.number}</span>
+                      <span className="text-lg pt-1.5">{step.text}</span>
                     </li>
                   ))}
                 </ol>
                 
                 <h3 className={`text-2xl font-semibold text-[${COLORS.dark}] mb-6`}>Ultra Premium Benefits</h3>
                 <ul className="space-y-4 text-gray-700 mb-12">
-                  {[
-                    { icon: "🎙️", text: "Stories narrated in your own voice" },
-                    { icon: "💫", text: "Personalized storylines featuring your child" },
-                    { icon: "🔄", text: "Update your voice model anytime" },
-                    { icon: "🎁", text: "Perfect gift for parents who travel or live apart" },
-                  ].map((item, index) => (
-                    <li key={index} className="flex items-center bg-white p-4 rounded-lg transition-all duration-300 hover:shadow-sm border border-gray-200/70">
-                      <span className={`text-xl mr-3 text-[${COLORS.primary}]`}>{item.icon}</span>
-                      <span className="text-lg">{item.text}</span>
+                  {benefits.map((b) => (
+                    <li key={b.text} className="flex items-center bg-white p-4 rounded-lg hover:shadow-sm border border-gray-200">
+                      <span className="text-xl mr-3 text-[${COLORS.primary}]">{b.icon}</span>
+                      <span className="text-lg">{b.text}</span>
                     </li>
                   ))}
                 </ul>
