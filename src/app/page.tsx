@@ -5,9 +5,9 @@ import Header from '@/components/Header';
 import HeroSection from '@/components/HeroSection';
 import FeaturesSection from '@/components/FeaturesSection';
 import TestimonialsSection from '@/components/TestimonialsSection';
-import PricingSection from '@/components/PricingSection';
+{/* import PricingSection from '@/components/PricingSection'; */}
 import CtaSection from '@/components/CtaSection';
-import Footer from '@/components/Footer';
+{/*import Footer from '@/components/Footer'; */}
 import DemoModal from '@/components/DemoModal';
 import DemoSection from '@/components/DemoSection';
 import ExampleStoriesSection from '@/components/ExampleStoriesSection';
