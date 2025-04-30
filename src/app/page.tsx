@@ -43,9 +43,9 @@ export default function Home() {
       <DemoSection openDemo={handleOpenDemo} />
       <ExampleStoriesSection />
       <TestimonialsSection />
-      <PricingSection />
+      {/* <PricingSection /> */}
       <CtaSection />
-      <Footer />
+      {/* <Footer /> */}
 
       {/* Render the Demo Modal */}
       <DemoModal show={isDemoOpen} onClose={handleCloseDemo} />
