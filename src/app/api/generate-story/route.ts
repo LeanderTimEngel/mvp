@@ -10,6 +10,11 @@ const openai = new OpenAI({
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
+// In-memory store for tracking story counts per email
+// Note: This will reset when the server restarts. For production, use a database.
+const storyCounts = new Map<string, number>();
+const MAX_STORIES_PER_EMAIL = 1;
+
 const STORY_LENGTH_KEYS = ['short', 'medium', 'long'] as const;
 
 const StoryRequestSchema = z.object({
@@ -44,6 +49,15 @@ export async function POST(request: Request) {
       storyLength,
       parentEmail,
     } = validationResult.data;
+
+    // Check if the email has reached its story limit
+    const currentCount = storyCounts.get(parentEmail) || 0;
+    if (currentCount >= MAX_STORIES_PER_EMAIL) {
+      return NextResponse.json(
+        { error: "You have reached the maximum number of stories allowed per email address." },
+        { status: 403 }
+      );
+    }
 
     const completion = await openai.chat.completions.create({
       model: "gpt-3.5-turbo",
@@ -107,6 +121,9 @@ export async function POST(request: Request) {
         { status: 500 }
       );
     }
+
+    // Increment the story count for this email
+    storyCounts.set(parentEmail, currentCount + 1);
 
     return NextResponse.json({ success: true, story });
 
