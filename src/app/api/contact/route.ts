@@ -39,8 +39,8 @@ export async function POST(request: NextRequest) {
 
     // Send the email using Resend
     const { data, error } = await resend.emails.send({
-      from: 'Magical Stories Contact <onboarding@resend.dev>', // Replace with your verified domain if possible
-      to: ['leanderengel99@gmail.com'], // Destination email address
+      from: 'Magical Stories Contact <hello@magical-stories.fun>', // Use verified domain email
+      to: [formData.email], // Use the email provided in the form
       subject: `New Contact Form Submission: ${formData.subject}`,
       replyTo: formData.email, // Corrected to camelCase
       html: `

@@ -76,7 +76,7 @@ export async function POST(request: Request) {
     const audioBuffer = Buffer.from(await audioResponse.arrayBuffer());
 
     const { error: emailError } = await resend.emails.send({
-      from: process.env.RESEND_FROM_EMAIL!, 
+      from: 'Magical Stories <hello@magical-stories.fun>',
       to: parentEmail,
       subject: `Your Personalized ${storyCategory} Story for ${childName}`,
       html: `
