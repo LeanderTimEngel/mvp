@@ -20,7 +20,69 @@ const avatarUrls = [
 export default function HeroSection({ openDemo }: HeroSectionProps) { // Destructure openDemo prop
   return (
     <div className="relative overflow-hidden pt-24 pb-10 sm:pt-32 sm:pb-20">
-      <div className="absolute inset-0 bg-gradient-to-r from-[#fa6565]/5 to-[#f2c955]/5" />
+      <div className="absolute inset-0 bg-gradient-to-r from-[#fa6565]/5 to-[#f2c955]/5 pointer-events-none" />
+      
+      {/* Floating images - smaller and more subtle than sales page */}
+      {/* Oben mitte rechts */}
+      <div className="absolute top-[9%] right-[20%] w-16 h-9 md:w-24 md:h-13.5 rounded-lg overflow-hidden shadow-sm border border-white/30 transform rotate-2 animate-float-slow z-10 hidden lg:block aspect-video">
+        <Image 
+          src="/images/Magical-Stories-6.jpg" 
+          alt="Magical story moment" 
+          width={96} 
+          height={54}
+          className="w-full h-full object-cover brightness-105"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#171c3f]/15 to-transparent"></div>
+      </div>
+      
+      {/* Oben links */}
+      <div className="absolute bottom-[75%] left-[5%] w-20 h-11 md:w-28 md:h-16 rounded-lg overflow-hidden shadow-sm border border-white/30 transform -rotate-2 animate-float-slower z-10 hidden lg:block aspect-video">
+        <Image 
+          src="/images/Magical-Stories-2.jpeg" 
+          alt="Parent with child" 
+          width={112} 
+          height={63}
+          className="w-full h-full object-cover brightness-105"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#171c3f]/15 to-transparent"></div>
+      </div>
+      
+      {/* Unten links */}
+      <div className="absolute top-[62%] left-[3%] w-14 h-8 md:w-20 md:h-11 rounded-lg overflow-hidden shadow-sm border border-white/30 transform rotate-3 animate-float-medium z-10 hidden lg:block aspect-video">
+        <Image 
+          src="/images/Magical-Stories-3.jpeg" 
+          alt="Child with story" 
+          width={80} 
+          height={45}
+          className="w-full h-full object-cover brightness-105"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#171c3f]/15 to-transparent"></div>
+      </div>
+      
+      {/* Mitte rechts */}
+      <div className="absolute top-[45%] right-[6%] w-16 h-9 md:w-22 md:h-12 rounded-lg overflow-hidden shadow-sm border border-white/30 transform rotate-4 animate-float-medium z-10 hidden lg:block aspect-video">
+        <Image 
+          src="/images/Magical-Stories-1.jpeg" 
+          alt="Child enjoying story" 
+          width={88} 
+          height={49}
+          className="w-full h-full object-cover brightness-105"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#171c3f]/15 to-transparent"></div>
+      </div>
+      
+      {/* Unten rechts */}
+      <div className="absolute bottom-[8%] right-[57%] w-14 h-8 md:w-18 md:h-10 rounded-lg overflow-hidden shadow-sm border border-white/30 transform -rotate-3 animate-float-fast z-10 hidden lg:block aspect-video">
+        <Image 
+          src="/images/Magical-Stories-4.jpeg" 
+          alt="Magical adventure" 
+          width={72} 
+          height={40}
+          className="w-full h-full object-cover brightness-105"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#171c3f]/15 to-transparent"></div>
+      </div>
+      
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-12 items-center">
           <div className="space-y-5 sm:space-y-8 animate-fade-in">
