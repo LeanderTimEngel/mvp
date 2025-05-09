@@ -18,6 +18,10 @@ const config: Config = {
         'blob': 'blob 7s infinite',
         'gradient': 'gradient 8s linear infinite',
         'gradient-pulse': 'gradientPulse 3s ease infinite alternate',
+        'float-slow': 'float 6s ease-in-out infinite alternate',
+        'float-slower': 'float 8s ease-in-out infinite alternate',
+        'float-medium': 'float 5s ease-in-out infinite alternate',
+        'float-fast': 'float 4s ease-in-out infinite alternate',
       },
       keyframes: {
         fadeIn: {
@@ -41,6 +45,11 @@ const config: Config = {
           '33%': { transform: 'translate(30px, -50px) scale(1.1)' },
           '66%': { transform: 'translate(-20px, 20px) scale(0.9)' },
           '100%': { transform: 'translate(0px, 0px) scale(1)' },
+        },
+        float: {
+          '0%': { transform: 'translateY(0px) rotate(0deg)' },
+          '50%': { transform: 'translateY(-10px) rotate(1deg)' },
+          '100%': { transform: 'translateY(0px) rotate(0deg)' },
         },
         gradient: {
           '0%': { backgroundPosition: '0% 50%' },

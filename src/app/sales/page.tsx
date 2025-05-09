@@ -62,6 +62,52 @@ export default function SalesPage() {
       {/* Hero Section with Video */}
       <section className="relative overflow-hidden pt-24 pb-16 sm:pt-32 sm:pb-24">
         <div className="absolute inset-0 bg-gradient-to-r from-[#fa6565]/5 to-[#f2c955]/5 pointer-events-none" />
+        
+        {/* Floating images with 16:9 aspect ratio - positioned absolutely */}
+        <div className="absolute top-[12%] right-[5%] w-32 h-18 md:w-48 md:h-27 rounded-lg overflow-hidden shadow-lg transform rotate-3 animate-float-slow z-10 hidden sm:block aspect-video">
+          <Image 
+            src="/images/Magical-Stories-6.jpg" 
+            alt="Child enjoying a story" 
+            width={192} 
+            height={108}
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#171c3f]/30 to-transparent"></div>
+        </div>
+        
+        <div className="absolute bottom-[15%] left-[7%] w-40 h-22.5 md:w-56 md:h-31.5 rounded-lg overflow-hidden shadow-lg transform -rotate-6 animate-float-slower z-10 hidden sm:block aspect-video">
+          <Image 
+            src="/images/Magical-Stories-2.jpeg" 
+            alt="Parent sharing magical story" 
+            width={224} 
+            height={126}
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#171c3f]/30 to-transparent"></div>
+        </div>
+        
+        <div className="absolute top-[35%] left-[12%] w-28 h-16 md:w-40 md:h-22.5 rounded-lg overflow-hidden shadow-lg transform rotate-6 animate-float-medium z-10 hidden lg:block aspect-video">
+          <Image 
+            src="/images/Magical-Stories-3.jpeg" 
+            alt="Child with story book" 
+            width={160} 
+            height={90}
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#171c3f]/30 to-transparent"></div>
+        </div>
+        
+        <div className="absolute bottom-[30%] right-[12%] w-24 h-13.5 md:w-36 md:h-20 rounded-lg overflow-hidden shadow-lg transform -rotate-3 animate-float-fast z-10 hidden lg:block aspect-video">
+          <Image 
+            src="/images/Magical-Stories-5.jpeg" 
+            alt="Magical story illustration" 
+            width={144} 
+            height={81}
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#171c3f]/30 to-transparent"></div>
+        </div>
+        
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto">
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-[#171c3f] leading-tight mb-6">
@@ -70,6 +116,30 @@ export default function SalesPage() {
             <p className="text-xl text-[#171c3f]/80 mb-8">
               Transform your child&apos;s imagination into personalized audio stories that spark creativity and joy.
             </p>
+            
+            {/* Mobile image display for smaller screens */}
+            <div className="flex justify-center gap-4 mb-8 sm:hidden">
+              <div className="w-36 h-20 rounded-lg overflow-hidden shadow-lg transform rotate-2 aspect-video">
+                <Image 
+                  src="/images/Magical-Stories-1.jpeg" 
+                  alt="Child enjoying a story" 
+                  width={144} 
+                  height={81}
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#171c3f]/30 to-transparent"></div>
+              </div>
+              <div className="w-36 h-20 rounded-lg overflow-hidden shadow-lg transform -rotate-2 aspect-video">
+                <Image 
+                  src="/images/Magical-Stories-2.jpeg" 
+                  alt="Parent sharing magical story" 
+                  width={144} 
+                  height={81}
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#171c3f]/30 to-transparent"></div>
+              </div>
+            </div>
             
             {/* Sales Video */}
             <div className="relative aspect-video mb-8 rounded-2xl overflow-hidden shadow-xl">
@@ -161,7 +231,7 @@ export default function SalesPage() {
       </section>
 
       {/* Image Showcase Section */}
-      <section className="py-20 bg-white">
+      {/*<section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-[#171c3f] mb-4">See It In Action</h2>
@@ -170,8 +240,8 @@ export default function SalesPage() {
             </p>
           </div>
           
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
-            <div className="group relative rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 aspect-[4/3]">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="group relative rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 aspect-video">
               <div className="absolute inset-0 bg-gradient-to-tr from-[#fa6565]/20 to-[#f2c955]/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10"></div>
               <div className="absolute top-0 left-0 w-full h-full transform translate-y-full group-hover:translate-y-0 bg-gradient-to-t from-[#171c3f]/80 to-transparent transition-transform duration-300 z-20">
                 <div className="absolute bottom-0 left-0 p-6">
@@ -183,12 +253,12 @@ export default function SalesPage() {
                 src="/images/Magical-Stories-1.jpeg" 
                 alt="Child enjoying a personalized magical story" 
                 width={600} 
-                height={450}
+                height={338}
                 className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500 ease-in-out"
               />
             </div>
             
-            <div className="group relative rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 aspect-[4/3]">
+            <div className="group relative rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 aspect-video">
               <div className="absolute inset-0 bg-gradient-to-tr from-[#fa6565]/20 to-[#f2c955]/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10"></div>
               <div className="absolute top-0 left-0 w-full h-full transform translate-y-full group-hover:translate-y-0 bg-gradient-to-t from-[#171c3f]/80 to-transparent transition-transform duration-300 z-20">
                 <div className="absolute bottom-0 left-0 p-6">
@@ -200,7 +270,41 @@ export default function SalesPage() {
                 src="/images/Magical-Stories-2.jpeg" 
                 alt="Parent sharing magical story with child" 
                 width={600} 
-                height={450}
+                height={338}
+                className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500 ease-in-out"
+              />
+            </div>
+            
+            <div className="group relative rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 aspect-video">
+              <div className="absolute inset-0 bg-gradient-to-tr from-[#fa6565]/20 to-[#f2c955]/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10"></div>
+              <div className="absolute top-0 left-0 w-full h-full transform translate-y-full group-hover:translate-y-0 bg-gradient-to-t from-[#171c3f]/80 to-transparent transition-transform duration-300 z-20">
+                <div className="absolute bottom-0 left-0 p-6">
+                  <h3 className="text-white text-xl font-bold mb-2">Story Adventures</h3>
+                  <p className="text-white/90">Exciting narratives that spark imagination and creativity.</p>
+                </div>
+              </div>
+              <Image 
+                src="/images/Magical-Stories-3.jpeg" 
+                alt="Child with storybook adventure" 
+                width={600} 
+                height={338}
+                className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500 ease-in-out"
+              />
+            </div>
+            
+            <div className="group relative rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 aspect-video">
+              <div className="absolute inset-0 bg-gradient-to-tr from-[#fa6565]/20 to-[#f2c955]/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10"></div>
+              <div className="absolute top-0 left-0 w-full h-full transform translate-y-full group-hover:translate-y-0 bg-gradient-to-t from-[#171c3f]/80 to-transparent transition-transform duration-300 z-20">
+                <div className="absolute bottom-0 left-0 p-6">
+                  <h3 className="text-white text-xl font-bold mb-2">Personalized Magic</h3>
+                  <p className="text-white/90">Stories tailored to your child's interests and personality.</p>
+                </div>
+              </div>
+              <Image 
+                src="/images/Magical-Stories-4.jpeg" 
+                alt="Magical story illustration" 
+                width={600} 
+                height={338}
                 className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500 ease-in-out"
               />
             </div>
@@ -215,7 +319,7 @@ export default function SalesPage() {
             </Link>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Features Grid */}
       <section className="py-20 bg-gradient-to-b from-white to-[#fafaf8]">
