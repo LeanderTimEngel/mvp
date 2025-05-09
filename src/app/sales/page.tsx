@@ -3,8 +3,6 @@
 import { useState, useEffect } from 'react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-import { COLORS } from '@/lib/constants';
-import Image from 'next/image';
 import Link from 'next/link';
 import { toast } from 'react-hot-toast';
 
@@ -70,7 +68,7 @@ export default function SalesPage() {
               Create Magical Stories Your Child Will Love
             </h1>
             <p className="text-xl text-[#171c3f]/80 mb-8">
-              Transform your child's imagination into personalized audio stories that spark creativity and joy.
+              Transform your child&apos;s imagination into personalized audio stories that spark creativity and joy.
             </p>
             
             {/* Sales Video */}
@@ -166,7 +164,7 @@ export default function SalesPage() {
       <section className="py-20 bg-gradient-to-b from-white to-[#fafaf8]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold text-[#171c3f] mb-4">What You'll Get</h2>
+            <h2 className="text-3xl font-bold text-[#171c3f] mb-4">What You&apos;ll Get</h2>
             <p className="text-xl text-[#171c3f]/80 max-w-2xl mx-auto">
               Everything you need to create magical stories your child will cherish.
             </p>
@@ -186,7 +184,7 @@ export default function SalesPage() {
               {
                 icon: '⏱️',
                 title: 'Perfect Length',
-                description: 'Stories tailored to your child\'s attention span, from quick 5-minute tales to longer 20-minute adventures.'
+                description: 'Stories tailored to your child&apos;s attention span, from quick 5-minute tales to longer 20-minute adventures.'
               },
               {
                 icon: '📱',
@@ -223,7 +221,7 @@ export default function SalesPage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
               {
-                quote: "My daughter asks for her personalized story every night. It's become our special bedtime ritual!",
+                quote: "My daughter asks for her personalized story every night. It&apos;s become our special bedtime ritual!",
                 author: "Sarah M.",
                 role: "Mother of 6-year-old"
               },
@@ -240,7 +238,7 @@ export default function SalesPage() {
             ].map((testimonial, index) => (
               <div key={index} className="bg-white rounded-2xl p-8 shadow-sm">
                 <div className="text-2xl mb-4">⭐️⭐️⭐️⭐️⭐️</div>
-                <p className="text-[#171c3f]/80 mb-6 italic">"{testimonial.quote}"</p>
+                <p className="text-[#171c3f]/80 mb-6 italic">&quot;{testimonial.quote}&quot;</p>
                 <div>
                   <div className="font-semibold text-[#171c3f]">{testimonial.author}</div>
                   <div className="text-sm text-[#171c3f]/60">{testimonial.role}</div>
@@ -328,7 +326,7 @@ export default function SalesPage() {
               <button
                 onClick={() => {
                   // Add email notification logic here
-                  toast.success('We\'ll notify you when the subscription is available!');
+                  toast.success('We&apos;ll notify you when the subscription is available!');
                 }}
                 className="w-full text-center bg-gradient-to-r from-gray-400 to-gray-500 text-white py-3 px-6 rounded-xl cursor-not-allowed opacity-60 font-semibold shadow-md"
               >
@@ -399,7 +397,7 @@ export default function SalesPage() {
               },
               {
                 question: "Can I cancel my subscription anytime?",
-                answer: "Yes, you can cancel your subscription at any time. You'll continue to have access until the end of your billing period."
+                answer: "Yes, you can cancel your subscription at any time. You&apos;ll continue to have access until the end of your billing period."
               }
             ].map((faq, index) => (
               <div key={index} className="bg-white rounded-2xl p-8 shadow-sm">
@@ -418,7 +416,7 @@ export default function SalesPage() {
             <div className="max-w-3xl mx-auto">
               <h2 className="text-3xl font-bold text-white mb-6">30-Day Money-Back Guarantee</h2>
               <p className="text-white/90 text-xl mb-8">
-                We're confident you'll love our stories. If you're not completely satisfied, we'll refund your purchase within 30 days.
+                We&apos;re confident you&apos;ll love our stories. If you&apos;re not completely satisfied, we&apos;ll refund your purchase within 30 days.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link
@@ -456,7 +454,7 @@ export default function SalesPage() {
                 <div className="text-sm">Seconds</div>
               </div>
             </div>
-            <p className="mt-6 text-lg text-white/90">For a short time, you can create your first personalized story completely free. Don't miss out!</p>
+            <p className="mt-6 text-lg text-white/90">For a short time, you can create your first personalized story completely free. Don&apos;t miss out!</p>
           </div>
         </div>
       </section>
