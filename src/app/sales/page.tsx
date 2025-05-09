@@ -5,6 +5,7 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import Link from 'next/link';
 import { toast } from 'react-hot-toast';
+import Image from 'next/image';
 
 export default function SalesPage() {
   const [email, setEmail] = useState('');
@@ -155,6 +156,63 @@ export default function SalesPage() {
                 <p className="text-[#171c3f]/80">{item.description}</p>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Image Showcase Section */}
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold text-[#171c3f] mb-4">See It In Action</h2>
+            <p className="text-xl text-[#171c3f]/80 max-w-2xl mx-auto">
+              Our platform creates beautiful, personalized stories that capture your child&apos;s imagination.
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
+            <div className="group relative rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 aspect-[4/3]">
+              <div className="absolute inset-0 bg-gradient-to-tr from-[#fa6565]/20 to-[#f2c955]/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10"></div>
+              <div className="absolute top-0 left-0 w-full h-full transform translate-y-full group-hover:translate-y-0 bg-gradient-to-t from-[#171c3f]/80 to-transparent transition-transform duration-300 z-20">
+                <div className="absolute bottom-0 left-0 p-6">
+                  <h3 className="text-white text-xl font-bold mb-2">Magical Storytelling</h3>
+                  <p className="text-white/90">AI-powered personalization that makes each story unique to your child.</p>
+                </div>
+              </div>
+              <Image 
+                src="/images/Magical-Stories-1.jpeg" 
+                alt="Child enjoying a personalized magical story" 
+                width={600} 
+                height={450}
+                className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500 ease-in-out"
+              />
+            </div>
+            
+            <div className="group relative rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 aspect-[4/3]">
+              <div className="absolute inset-0 bg-gradient-to-tr from-[#fa6565]/20 to-[#f2c955]/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10"></div>
+              <div className="absolute top-0 left-0 w-full h-full transform translate-y-full group-hover:translate-y-0 bg-gradient-to-t from-[#171c3f]/80 to-transparent transition-transform duration-300 z-20">
+                <div className="absolute bottom-0 left-0 p-6">
+                  <h3 className="text-white text-xl font-bold mb-2">Enchanting Experiences</h3>
+                  <p className="text-white/90">Create special moments and memories that last a lifetime.</p>
+                </div>
+              </div>
+              <Image 
+                src="/images/Magical-Stories-2.jpeg" 
+                alt="Parent sharing magical story with child" 
+                width={600} 
+                height={450}
+                className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500 ease-in-out"
+              />
+            </div>
+          </div>
+          
+          <div className="mt-12 text-center">
+            <Link
+              href="/create-story"
+              className="inline-flex items-center justify-center rounded-full text-sm font-medium transition-colors bg-gradient-to-r from-[#fa6565] to-[#f2c955] text-white hover:opacity-90 py-3 px-8 text-lg"
+            >
+              Create Your Story Now
+            </Link>
           </div>
         </div>
       </section>
