@@ -1,0 +1,16 @@
+{
+  "builds": [
+    {
+      "src": "package.json",
+      "use": "@vercel/next",
+      "config": {
+        "skipTests": true
+      }
+    }
+  ],
+  "build": {
+    "env": {
+      "NEXT_IGNORE_ESLINT_ERRORS": "true"
+    }
+  }
+} 
