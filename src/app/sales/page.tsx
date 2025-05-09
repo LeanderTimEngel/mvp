@@ -37,11 +37,19 @@ export default function SalesPage() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
     try {
-      // Add your email collection logic here
-      toast.success('Thanks for joining! Check your email for next steps.');
-      setEmail('');
+      const res = await fetch('/api/subscribe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email }),
+      });
+      if (res.ok) {
+        toast.success('Thanks for joining! Check your email for next steps.');
+        setEmail('');
+      } else {
+        const data = await res.json();
+        toast.error(data.error || 'Something went wrong. Please try again.');
+      }
     } catch (error) {
       toast.error('Something went wrong. Please try again.');
     } finally {
@@ -429,7 +437,7 @@ export default function SalesPage() {
       <section className="py-12 bg-[#171c3f] text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
-            <h3 className="text-2xl font-bold mb-6">Limited Time Offer - Save 50%</h3>
+            <h3 className="text-2xl font-bold mb-6">Limited Time Offer – Get Your First Story for Free!</h3>
             <div className="flex justify-center gap-4">
               <div className="bg-white/10 rounded-lg p-4 min-w-[80px]">
                 <div className="text-3xl font-bold">{timeLeft.days}</div>
@@ -448,6 +456,7 @@ export default function SalesPage() {
                 <div className="text-sm">Seconds</div>
               </div>
             </div>
+            <p className="mt-6 text-lg text-white/90">For a short time, you can create your first personalized story completely free. Don't miss out!</p>
           </div>
         </div>
       </section>
