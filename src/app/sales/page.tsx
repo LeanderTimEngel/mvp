@@ -45,8 +45,7 @@ export default function SalesPage() {
         toast.success('Thanks for joining! Check your email for next steps.');
         setEmail('');
       } else {
-        const data = await res.json();
-        toast.error(data.error || 'Something went wrong. Please try again.');
+        toast.error('Something went wrong. Please try again.');
       }
     } catch (error) {
       toast.error('Something went wrong. Please try again.');
