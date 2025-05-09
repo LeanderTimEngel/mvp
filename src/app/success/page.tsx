@@ -8,7 +8,7 @@ export const dynamic = 'force-dynamic'; // Prevent static generation
 function SuccessContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const sessionId = searchParams.get('session_id');
+  const sessionId = searchParams?.get('session_id') || null;
 
   useEffect(() => {
     // Redirect if sessionId is missing, potentially indicating direct access without payment
