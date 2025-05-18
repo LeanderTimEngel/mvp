@@ -1,131 +1,112 @@
 'use client'; // Headers often need client-side interactivity (e.g., mobile menu)
 
-import Link from 'next/link';
 import { useState, useEffect } from 'react';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import Logo from '@/components/Logo';
-import { COLORS } from '@/lib/constants';
 
-interface HeaderProps {
-  isHomePage?: boolean; // Optional prop to differentiate header content
-}
+const navigation = [
+  { name: 'Home', href: '/' },
+  { name: 'About', href: '/about' },
+  { name: 'Contact', href: '/contact' }
+];
 
-export default function Header({ isHomePage = false }: HeaderProps) {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+export default function Header() {
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const pathname = usePathname();
 
-  // Prevent scrolling when mobile menu is open
   useEffect(() => {
-    if (mobileMenuOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'auto';
-    }
-    return () => {
-      document.body.style.overflow = 'auto';
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 0);
     };
-  }, [mobileMenuOpen]);
 
-  const toggleMobileMenu = () => {
-    setMobileMenuOpen(!mobileMenuOpen);
-  };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-lg border-b border-gray-200/80 shadow-sm`}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-20">
-          <Link href="/" aria-label="Back to Homepage">
+    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      isScrolled ? 'bg-white/80 backdrop-blur-md shadow-sm' : 'bg-transparent'
+    }`}>
+      <nav className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between h-16 sm:h-20">
+          {/* Logo */}
+          <Link href="/" className="flex-shrink-0">
             <Logo />
           </Link>
-          
-          {/* Conditional Navigation Links/Buttons */}
-          {isHomePage ? (
-            // Navigation for Home Page
-            <div className="flex items-center">
-              {/* Desktop Navigation */}
-              <div className="hidden sm:flex items-center space-x-8">
-                <Link href="/landing" className={`text-[${COLORS.dark}] hover:text-[${COLORS.primary}] transition-colors duration-200 font-medium px-1 py-1`}>Landing</Link>
-                <a href="#features" className={`text-[${COLORS.dark}] hover:text-[${COLORS.primary}] transition-colors duration-200 font-medium px-1 py-1`}>Features</a>
-                <a href="#testimonials" className={`text-[${COLORS.dark}] hover:text-[${COLORS.primary}] transition-colors duration-200 font-medium px-1 py-1`}>Testimonials</a>
-                <a href="#pricing" className={`text-[${COLORS.dark}] hover:text-[${COLORS.primary}] transition-colors duration-200 font-medium px-1 py-1`}>Pricing</a>
-                
-                {/* Desktop "Get Started" button - only visible on desktop */}
-                <Link
-                  href="#story-form"
-                  className={`bg-gradient-to-r from-[${COLORS.primary}] to-[${COLORS.secondary}] text-white px-5 sm:px-6 py-2.5 rounded-full hover:opacity-90 transition-opacity duration-200 font-semibold shadow-sm text-sm sm:text-base`}
-                >
-                  Get Started
-                </Link>
-              </div>
-              
-              {/* Mobile Hamburger Menu Button */}
-              <button 
-                onClick={toggleMobileMenu}
-                className="sm:hidden flex flex-col justify-center items-center z-50"
-                aria-label="Toggle mobile menu"
-              >
-                <span className={`block w-6 h-0.5 bg-gray-800 transition-all duration-300 mb-1.5 ${mobileMenuOpen ? 'rotate-45 translate-y-2' : ''}`}></span>
-                <span className={`block w-6 h-0.5 bg-gray-800 transition-all duration-300 ${mobileMenuOpen ? 'opacity-0' : ''}`}></span>
-                <span className={`block w-6 h-0.5 bg-gray-800 transition-all duration-300 mt-1.5 ${mobileMenuOpen ? '-rotate-45 -translate-y-2' : ''}`}></span>
-              </button>
-            </div>
-          ) : (
-            // Button for Other Pages
-            <div className="flex items-center">
-              <Link
-                href="/"
-                className={`bg-gradient-to-r from-[${COLORS.primary}] to-[${COLORS.secondary}] text-white px-5 sm:px-6 py-2.5 rounded-full hover:opacity-90 transition-opacity duration-200 font-semibold shadow-sm text-sm sm:text-base`}
-              >
-                Back to Home
-              </Link>
-            </div>
-          )}
-        </div>
-      </div>
 
-      {/* Mobile Menu Overlay */}
-      {isHomePage && (
-        <div 
-          className={`fixed inset-0 z-40 bg-white/95 backdrop-blur-sm transition-all duration-300 ${mobileMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible pointer-events-none'} sm:hidden`}
-          style={{ top: '80px', height: 'calc(100vh - 80px)' }}
-        >
-          <div className="flex flex-col items-center justify-start h-full pt-16 pb-8 space-y-8">
-            <Link 
-              href="/landing" 
-              className={`text-xl text-[${COLORS.dark}] hover:text-[${COLORS.primary}] transition-colors duration-200 font-medium`}
-              onClick={toggleMobileMenu}
-            >
-              Landing
-            </Link>
-            <a 
-              href="#features" 
-              className={`text-xl text-[${COLORS.dark}] hover:text-[${COLORS.primary}] transition-colors duration-200 font-medium`}
-              onClick={toggleMobileMenu}
-            >
-              Features
-            </a>
-            <a 
-              href="#testimonials" 
-              className={`text-xl text-[${COLORS.dark}] hover:text-[${COLORS.primary}] transition-colors duration-200 font-medium`}
-              onClick={toggleMobileMenu}
-            >
-              Testimonials
-            </a>
-            <a 
-              href="#pricing" 
-              className={`text-xl text-[${COLORS.dark}] hover:text-[${COLORS.primary}] transition-colors duration-200 font-medium`}
-              onClick={toggleMobileMenu}
-            >
-              Pricing
-            </a>
+          {/* Desktop Navigation */}
+          <div className="hidden md:flex md:items-center md:space-x-8">
+            {navigation.map((item) => (
+              <Link
+                key={item.name}
+                href={item.href}
+                className={`text-sm font-medium transition-colors ${
+                  pathname === item.href
+                    ? 'text-[#171c3f]'
+                    : 'text-gray-600 hover:text-[#171c3f]'
+                }`}
+              >
+                {item.name}
+              </Link>
+            ))}
             <Link
-              href="#story-form"
-              className={`bg-gradient-to-r from-[${COLORS.primary}] to-[${COLORS.secondary}] text-white px-8 py-3 rounded-full hover:opacity-90 transition-opacity duration-200 font-semibold shadow-sm text-lg mt-4`}
-              onClick={toggleMobileMenu}
+              href="/create"
+              className="inline-flex items-center justify-center px-6 py-2.5 text-sm font-medium text-white bg-gradient-to-r from-[#fa6565] to-[#f2c955] rounded-full hover:opacity-90 transition-opacity"
             >
-              Get Started
+              Create Story
             </Link>
           </div>
+
+          {/* Mobile menu button */}
+          <div className="md:hidden">
+            <button
+              type="button"
+              className="inline-flex items-center justify-center p-2 rounded-md text-gray-600 hover:text-[#171c3f] hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-[#171c3f]"
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            >
+              <span className="sr-only">Open main menu</span>
+              {isMobileMenuOpen ? (
+                <svg className="block h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              ) : (
+                <svg className="block h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+              )}
+            </button>
+          </div>
         </div>
-      )}
-    </nav>
+      </nav>
+
+      {/* Mobile menu */}
+      <div className={`md:hidden ${isMobileMenuOpen ? 'block' : 'hidden'}`}>
+        <div className="px-2 pt-2 pb-3 space-y-1 bg-white shadow-lg">
+          {navigation.map((item) => (
+            <Link
+              key={item.name}
+              href={item.href}
+              className={`block px-3 py-2 rounded-md text-base font-medium ${
+                pathname === item.href
+                  ? 'text-[#171c3f] bg-gray-50'
+                  : 'text-gray-600 hover:text-[#171c3f] hover:bg-gray-50'
+              }`}
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              {item.name}
+            </Link>
+          ))}
+          <Link
+            href="/create"
+            className="block w-full text-center px-3 py-2 rounded-md text-base font-medium text-white bg-gradient-to-r from-[#fa6565] to-[#f2c955] hover:opacity-90 transition-opacity"
+            onClick={() => setIsMobileMenuOpen(false)}
+          >
+            Create Story
+          </Link>
+        </div>
+      </div>
+    </header>
   );
 } 
