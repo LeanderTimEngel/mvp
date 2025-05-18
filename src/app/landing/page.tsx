@@ -4,6 +4,7 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { toast } from 'react-hot-toast';
 import AudioPlayer from '@/components/AudioPlayer';
+import { LANDING_HOW_IT_WORKS_STEPS, COLORS } from '@/lib/constants';
 
 export default function LandingPage() {
   const [email, setEmail] = useState('');
@@ -32,17 +33,17 @@ export default function LandingPage() {
   };
 
   return (
-    <main className="min-h-screen bg-[#fafaf8]">
+    <main className={`min-h-screen bg-[#fafaf8]`}>
       {/* Hero Section */}
       <section className="relative overflow-hidden pt-24 pb-16 sm:pt-32 sm:pb-24">
-        <div className="absolute inset-0 bg-gradient-to-r from-[#fa6565]/5 to-[#f2c955]/5 pointer-events-none" />
+        <div className={`absolute inset-0 bg-gradient-to-r from-[${COLORS.primary}]/5 to-[${COLORS.secondary}]/5 pointer-events-none`} />
         
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto">
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-[#171c3f] leading-tight mb-6">
+            <h1 className={`text-4xl sm:text-5xl lg:text-6xl font-bold text-[${COLORS.dark}] leading-tight mb-6`}>
               Struggling to Find Engaging Bedtime Stories for Your Child?
             </h1>
-            <p className="text-xl text-[#171c3f]/80 mb-8">
+            <p className={`text-xl text-[${COLORS.dark}]/80 mb-8`}>
               &quot;My son wouldn&apos;t settle down at night until we found stories he loved.&quot; - Sarah, mother of a 6-year-old
             </p>
             
@@ -50,7 +51,7 @@ export default function LandingPage() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
               <Link
                 href="/create-story"
-                className="inline-flex items-center justify-center rounded-full text-sm font-medium transition-colors bg-gradient-to-r from-[#fa6565] to-[#f2c955] text-white hover:opacity-90 h-12 px-8 text-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
+                className={`inline-flex items-center justify-center rounded-full text-sm font-medium transition-colors bg-gradient-to-r from-[${COLORS.primary}] to-[${COLORS.secondary}] text-white hover:opacity-90 h-12 px-8 text-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300`}
               >
                 Create a Story to Spark Your Child&apos;s Imagination
               </Link>
@@ -61,14 +62,14 @@ export default function LandingPage() {
                     sampleSection.scrollIntoView({ behavior: 'smooth' });
                   }
                 }}
-                className="inline-flex items-center justify-center rounded-full text-sm font-medium transition-colors bg-[#171c3f]/10 text-[#171c3f] hover:bg-[#171c3f]/20 h-12 px-8 text-lg"
+                className={`inline-flex items-center justify-center rounded-full text-sm font-medium transition-colors bg-[${COLORS.dark}]/10 text-[${COLORS.dark}] hover:bg-[${COLORS.dark}]/20 h-12 px-8 text-lg`}
               >
                 Listen to a Free Sample
               </button>
             </div>
 
             {/* Social Proof */}
-            <div className="flex justify-center items-center gap-8 text-sm text-[#171c3f]/60">
+            <div className={`flex justify-center items-center gap-8 text-sm text-[${COLORS.dark}]/60`}>
               <div className="flex items-center">
                 <span className="text-2xl mr-2">⭐️</span>
                 <span>4.9/5 Parent Rating</span>
@@ -90,39 +91,23 @@ export default function LandingPage() {
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold text-[#171c3f] mb-4">Unlike Generic Audiobooks, Your Child Becomes the Hero</h2>
-            <p className="text-xl text-[#171c3f]/80 max-w-2xl mx-auto">
+            <h2 className={`text-3xl font-bold text-[${COLORS.dark}] mb-4`}>Unlike Generic Audiobooks, Your Child Becomes the Hero</h2>
+            <p className={`text-xl text-[${COLORS.dark}]/80 max-w-2xl mx-auto`}>
               Our stories are designed to captivate and educate your child, featuring them as the main character in their own adventure
             </p>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[
-              {
-                step: "1",
-                title: "Tell Us About Your Child",
-                description: "Share your child&apos;s name, age, favorite character, and interests. We&apos;ll use these to create a story they&apos;ll love."
-              },
-              {
-                step: "2",
-                title: "We Create a Magical Story",
-                description: "Our story experts craft a unique adventure that&apos;s perfect for your child&apos;s age and interests, making them the hero of their own tale."
-              },
-              {
-                step: "3",
-                title: "Enjoy Together",
-                description: "Get your story delivered to your email with professional narration, ready for bedtime, car rides, or any time they need a magical adventure."
-              }
-            ].map((step, index) => (
+            {LANDING_HOW_IT_WORKS_STEPS.map((step, index) => (
               <div key={index} className="relative">
                 <div className="bg-white rounded-2xl p-8 shadow-sm border border-gray-100">
-                  <div className="text-4xl font-bold text-[#fa6565] mb-4">{step.step}</div>
-                  <h3 className="text-xl font-semibold text-[#171c3f] mb-3">{step.title}</h3>
-                  <p className="text-[#171c3f]/80">{step.description}</p>
+                  <div className={`text-4xl font-bold text-[${COLORS.primary}] mb-4`}>{step.step}</div>
+                  <h3 className={`text-xl font-semibold text-[${COLORS.dark}] mb-3`}>{step.title}</h3>
+                  <p className={`text-[${COLORS.dark}]/80`}>{step.description}</p>
                 </div>
-                {index < 2 && (
+                {index < LANDING_HOW_IT_WORKS_STEPS.length - 1 && (
                   <div className="hidden md:block absolute top-1/2 right-0 transform translate-x-1/2 -translate-y-1/2">
-                    <div className="text-2xl text-[#171c3f]/20">→</div>
+                    <div className={`text-2xl text-[${COLORS.dark}]/20`}>→</div>
                   </div>
                 )}
               </div>
@@ -135,8 +120,8 @@ export default function LandingPage() {
       <section id="sample-story" className="py-20 bg-gradient-to-b from-white to-[#fafaf8]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold text-[#171c3f] mb-4">Listen to a Sample Story</h2>
-            <p className="text-xl text-[#171c3f]/80 max-w-2xl mx-auto">
+            <h2 className={`text-3xl font-bold text-[${COLORS.dark}] mb-4`}>Listen to a Sample Story</h2>
+            <p className={`text-xl text-[${COLORS.dark}]/80 max-w-2xl mx-auto`}>
               Experience the magic of a personalized story featuring Tom and his favorite character
             </p>
           </div>
@@ -152,7 +137,7 @@ export default function LandingPage() {
             <div className="mt-8 text-center">
               <Link
                 href="/create-story"
-                className="inline-flex items-center justify-center rounded-full text-sm font-medium transition-colors bg-gradient-to-r from-[#fa6565] to-[#f2c955] text-white hover:opacity-90 h-12 px-8 text-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
+                className={`inline-flex items-center justify-center rounded-full text-sm font-medium transition-colors bg-gradient-to-r from-[${COLORS.primary}] to-[${COLORS.secondary}] text-white hover:opacity-90 h-12 px-8 text-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300`}
               >
                 Create Your Child&apos;s Story
               </Link>
@@ -165,8 +150,8 @@ export default function LandingPage() {
       <section className="py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold text-[#171c3f] mb-4">Why Parents Choose Magical Stories</h2>
-            <p className="text-xl text-[#171c3f]/80 max-w-2xl mx-auto">
+            <h2 className={`text-3xl font-bold text-[${COLORS.dark}] mb-4`}>Why Parents Choose Magical Stories</h2>
+            <p className={`text-xl text-[${COLORS.dark}]/80 max-w-2xl mx-auto`}>
               Everything you need to create magical moments your child will cherish
             </p>
           </div>
@@ -196,8 +181,8 @@ export default function LandingPage() {
             ].map((feature, index) => (
               <div key={index} className="bg-white rounded-2xl p-8 shadow-sm">
                 <div className="text-4xl mb-4">{feature.icon}</div>
-                <h3 className="text-xl font-semibold text-[#171c3f] mb-3">{feature.title}</h3>
-                <p className="text-[#171c3f]/80">{feature.description}</p>
+                <h3 className={`text-xl font-semibold text-[${COLORS.dark}] mb-3`}>{feature.title}</h3>
+                <p className={`text-[${COLORS.dark}]/80`}>{feature.description}</p>
               </div>
             ))}
           </div>
@@ -208,7 +193,7 @@ export default function LandingPage() {
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold text-[#171c3f] mb-4">What Parents Are Saying</h2>
+            <h2 className={`text-3xl font-bold text-[${COLORS.dark}] mb-4`}>What Parents Are Saying</h2>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -231,10 +216,10 @@ export default function LandingPage() {
             ].map((testimonial, index) => (
               <div key={index} className="bg-[#fafaf8] rounded-2xl p-8">
                 <div className="text-2xl mb-4">⭐️⭐️⭐️⭐️⭐️</div>
-                <p className="text-[#171c3f]/80 mb-6 italic">&quot;{testimonial.quote}&quot;</p>
+                <p className={`text-[${COLORS.dark}]/80 mb-6 italic`}>&quot;{testimonial.quote}&quot;</p>
                 <div>
-                  <div className="font-semibold text-[#171c3f]">{testimonial.author}</div>
-                  <div className="text-sm text-[#171c3f]/60">{testimonial.role}</div>
+                  <div className={`font-semibold text-[${COLORS.dark}]`}>{testimonial.author}</div>
+                  <div className={`text-sm text-[${COLORS.dark}]/60`}>{testimonial.role}</div>
                 </div>
               </div>
             ))}
@@ -246,8 +231,8 @@ export default function LandingPage() {
       <section id="pricing" className="py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold text-[#171c3f] mb-4">Simple, Transparent Pricing</h2>
-            <p className="text-xl text-[#171c3f]/80 max-w-2xl mx-auto">
+            <h2 className={`text-3xl font-bold text-[${COLORS.dark}] mb-4`}>Simple, Transparent Pricing</h2>
+            <p className={`text-xl text-[${COLORS.dark}]/80 max-w-2xl mx-auto`}>
               Choose the plan that sparks the most joy and imagination for your family
             </p>
           </div>
@@ -256,7 +241,7 @@ export default function LandingPage() {
             {/* One-Time Story */}
             <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100">
               <div className="mb-4">
-                <h3 className="text-xl font-semibold text-[#171c3f]">One-Time Story</h3>
+                <h3 className={`text-xl font-semibold text-[${COLORS.dark}]`}>One-Time Story</h3>
                 <p className="text-3xl font-bold text-gray-900 mt-2">
                   $0.99 <span className="text-base font-normal text-gray-500">/ story</span>
                 </p>
@@ -278,7 +263,7 @@ export default function LandingPage() {
               </ul>
               <Link
                 href="/create-story"
-                className="block w-full text-center bg-gradient-to-r from-[#fa6565] to-[#f2c955] text-white py-3 px-6 rounded-xl hover:opacity-90 transition-all duration-300 font-semibold"
+                className={`block w-full text-center bg-gradient-to-r from-[${COLORS.primary}] to-[${COLORS.secondary}] text-white py-3 px-6 rounded-xl hover:opacity-90 transition-all duration-300 font-semibold`}
               >
                 Create Your Story
               </Link>
@@ -288,7 +273,7 @@ export default function LandingPage() {
             <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100">
               <div className="mb-4">
                 <div className="flex justify-between items-start">
-                  <h3 className="text-xl font-semibold text-[#171c3f]">Monthly Subscription</h3>
+                  <h3 className={`text-xl font-semibold text-[${COLORS.dark}]`}>Monthly Subscription</h3>
                   <span className="bg-yellow-200 text-yellow-800 text-sm font-semibold px-4 py-1 rounded-full">Coming Soon</span>
                 </div>
                 <p className="text-3xl font-bold text-gray-900 mt-2">
@@ -327,7 +312,7 @@ export default function LandingPage() {
       {/* Guarantee Section */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-gradient-to-r from-[#fa6565] to-[#f2c955] rounded-3xl p-8 md:p-12 text-center">
+          <div className={`bg-gradient-to-r from-[${COLORS.primary}] to-[${COLORS.secondary}] rounded-3xl p-8 md:p-12 text-center`}>
             <div className="max-w-3xl mx-auto">
               <h2 className="text-3xl font-bold text-white mb-6">30-Day Money-Back Guarantee</h2>
               <p className="text-white/90 text-xl mb-8">
@@ -335,7 +320,7 @@ export default function LandingPage() {
               </p>
               <Link
                 href="/create-story"
-                className="inline-flex items-center justify-center rounded-full text-sm font-medium transition-colors bg-white text-[#171c3f] hover:bg-white/90 h-12 px-8 text-lg"
+                className={`inline-flex items-center justify-center rounded-full text-sm font-medium transition-colors bg-white text-[${COLORS.dark}] hover:bg-white/90 h-12 px-8 text-lg`}
               >
                 Start Free Trial
               </Link>
@@ -348,8 +333,8 @@ export default function LandingPage() {
       <section className="py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-2xl mx-auto text-center">
-            <h2 className="text-3xl font-bold text-[#171c3f] mb-4">Get Early Access</h2>
-            <p className="text-[#171c3f]/80 mb-8">
+            <h2 className={`text-3xl font-bold text-[${COLORS.dark}] mb-4`}>Get Early Access</h2>
+            <p className={`text-[${COLORS.dark}]/80 mb-8`}>
               Be the first to know when we launch new features and exclusive story templates.
             </p>
             <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-4">
@@ -358,13 +343,13 @@ export default function LandingPage() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="Enter your email"
-                className="flex-1 px-6 py-3 rounded-full border border-gray-200 focus:outline-none focus:ring-2 focus:ring-[#fa6565]/20 focus:border-[#fa6565]"
+                className={`flex-1 px-6 py-3 rounded-full border border-gray-200 focus:outline-none focus:ring-2 focus:ring-[${COLORS.primary}]/20 focus:border-[${COLORS.primary}]`}
                 required
               />
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="inline-flex items-center justify-center rounded-full text-sm font-medium transition-colors bg-gradient-to-r from-[#fa6565] to-[#f2c955] text-white hover:opacity-90 h-12 px-8 disabled:opacity-50"
+                className={`inline-flex items-center justify-center rounded-full text-sm font-medium transition-colors bg-gradient-to-r from-[${COLORS.primary}] to-[${COLORS.secondary}] text-white hover:opacity-90 h-12 px-8 disabled:opacity-50`}
               >
                 {isSubmitting ? 'Subscribing...' : 'Subscribe'}
               </button>

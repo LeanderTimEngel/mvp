@@ -33,4 +33,31 @@ export const STORY_LENGTH_WORDS = {
 };
 
 // Demo Video URL
-export const DEMO_VIDEO_URL = 'https://www.loom.com/share/b0f9157b0ee04dbabc66bbbc4d0aefe7?sid=afdbb7c2-3dd1-420a-b286-5e074d4da96b'; 
+export const DEMO_VIDEO_URL = 'https://www.loom.com/share/b0f9157b0ee04dbabc66bbbc4d0aefe7?sid=afdbb7c2-3dd1-420a-b286-5e074d4da96b';
+
+// Landing Page - How It Works Section
+export interface HowItWorksStep {
+  step: string;
+  title: string;
+  description: string;
+}
+
+export const LANDING_HOW_IT_WORKS_STEPS: HowItWorksStep[] = [
+  {
+    step: "1",
+    title: "Tell Us About Your Child",
+    description: "Share your child&apos;s name, age, favorite character, and interests. We&apos;ll use these to create a story they&apos;ll love."
+  },
+  {
+    step: "2",
+    title: "We Create a Magical Story",
+    description: "Our story experts craft a unique adventure that&apos;s perfect for your child&apos;s age and interests, making them the hero of their own tale."
+  },
+  {
+    step: "3",
+    title: "Enjoy Together",
+    description: "Get your story delivered to your email with professional narration, ready for bedtime, car rides, or any time they need a magical adventure."
+  }
+];
+
+// Add other constants for landing page content here (Features, Testimonials etc.) 

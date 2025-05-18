@@ -5,7 +5,7 @@ import { useForm, UseFormRegister, FieldError } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { toast } from 'react-hot-toast';
-import { COLORS, STORY_CATEGORIES, STORY_LENGTHS } from '@/lib/constants';
+import { STORY_CATEGORIES, STORY_LENGTHS, COLORS } from '@/lib/constants';
 
 const formSchema = z.object({
   childName: z.string().min(1, "Child's name is required").max(50, 'Name is too long'),
@@ -78,7 +78,7 @@ const FormField = ({
           />
         )}
       </div>
-      {error && <p className={`text-sm text-red-700 mt-1.5`}>{error.message}</p>}
+      {error && <p className={`text-sm text-[${COLORS.error}] mt-1.5`}>{error.message}</p>}
     </div>
   );
 };
@@ -161,6 +161,19 @@ export default function StoryForm() {
     );
   }
 
+  // Loading State UI (Optional - Can be enhanced)
+  if (isSubmitting) {
+    return (
+      <div className="text-center py-12 px-4 space-y-4 flex flex-col items-center justify-center min-h-[400px]">
+        <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-b-4 border-[${COLORS.primary}]"></div>
+        <h2 className={`text-xl font-semibold text-[${COLORS.dark}]`}>Crafting your masterpiece...</h2>
+        <p className={`text-[${COLORS.dark}]/70 max-w-xs`}>
+          Our storytellers are hard at work. This might take a moment, please wait!
+        </p>
+      </div>
+    );
+  }
+
   // Form field configuration using constants and types
   // We define the configuration here, but the actual register function is passed down
   const formFields: Omit<FormFieldProps, 'register' | 'error'>[] = [
@@ -175,44 +188,52 @@ export default function StoryForm() {
   ];
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
-      {/* Form Header */}
-      <div className="space-y-1.5">
-        <h2 className={`text-2xl font-bold text-[${COLORS.dark}]`}>Create a Magical Story</h2>
-        <p className={`text-[${COLORS.dark}]/80`}>Fill in the details below to generate a unique audio story for your child.</p>
-      </div>
+    <div id="story-form" className="relative bg-gradient-to-br from-[#fae9f2] via-[#fdf3e1] to-[#f0f5fd] p-6 sm:p-10 rounded-3xl shadow-2xl border border-white/50 backdrop-blur-lg overflow-hidden">
+      {/* Decorative Blobs */}
+      <div className="absolute -top-16 -left-16 w-48 h-48 bg-gradient-to-r from-[${COLORS.primary}]/30 to-[${COLORS.secondary}]/30 rounded-full filter blur-3xl opacity-60 animate-blob"></div>
+      <div className="absolute -bottom-16 -right-10 w-56 h-56 bg-gradient-to-r from-[${COLORS.secondary}]/30 to-[${COLORS.primary}]/30 rounded-full filter blur-3xl opacity-60 animate-blob animation-delay-2000"></div>
+      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-gradient-to-r from-[${COLORS.primary}]/10 to-[${COLORS.secondary}]/10 rounded-full filter blur-2xl opacity-40 animate-blob animation-delay-4000"></div>
 
-      {/* Render Form Fields */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-5">
-        {formFields.map(field => (
-          <div key={field.id} className={field.id === 'parentEmail' ? 'md:col-span-2' : ''}>
-            <FormField
-              {...field} 
-              register={register} 
-              error={errors[field.id]}
-            />
+      <div className="relative z-10">
+        <div className="text-center mb-8">
+          <h2 className={`text-3xl sm:text-4xl font-bold text-[${COLORS.dark}] mb-3`}>Create Your Child&apos;s Magical Story</h2>
+          <p className={`text-[${COLORS.dark}]/70 max-w-lg mx-auto text-sm sm:text-base`}>
+            Fill in the details below, and we&apos;ll craft a unique audio story, voiced by AI, and send it straight to your email!
+          </p>
+        </div>
+
+        <form onSubmit={handleSubmit(onSubmit)} className="space-y-5 sm:space-y-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-6">
+            {formFields.slice(0, 2).map((field) => (
+              <FormField key={field.id} {...field} register={register} error={errors[field.id]} />
+            ))}
           </div>
-        ))}
-      </div>
+          {formFields.slice(2).map((field) => (
+            <FormField key={field.id} {...field} register={register} error={errors[field.id]} />
+          ))}
+          
+          <button
+            type="submit"
+            disabled={isSubmitting}
+            className={`w-full flex items-center justify-center gap-2 bg-gradient-to-r from-[${COLORS.primary}] to-[${COLORS.secondary}] text-white px-6 py-3.5 rounded-xl hover:opacity-90 transition-all duration-300 shadow-lg hover:shadow-xl font-semibold text-base sm:text-lg disabled:opacity-60 disabled:cursor-not-allowed transform hover:scale-[1.02] active:scale-[0.98]`}
+          >
+            {isSubmitting ? (
+              <>
+                <div className="animate-spin rounded-full h-5 w-5 border-t-2 border-b-2 border-white"></div>
+                Crafting Story...
+              </>
+            ) : (
+              <>
+                <span className="text-xl">✨</span> Generate My Magical Story
+              </>
+            )}
+          </button>
+        </form>
 
-      {/* Submit Button */}
-      <button
-        type="submit"
-        disabled={isSubmitting}
-        className={`w-full flex items-center justify-center bg-gradient-to-r from-[${COLORS.primary}] to-[${COLORS.secondary}] text-white px-6 py-3.5 rounded-xl font-semibold text-lg hover:opacity-95 active:opacity-100 transition-all duration-200 transform hover:scale-[1.01] active:scale-[0.99] disabled:opacity-60 disabled:cursor-not-allowed relative shadow-md hover:shadow-lg active:shadow-sm`}
-      >
-        {isSubmitting ? (
-          <>
-            <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-              <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-              <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-            </svg>
-            <span>Creating your story...</span>
-          </>
-        ) : (
-          'Create Magical Story'
-        )}
-      </button>
-    </form>
+        <p className={`mt-6 text-xs text-center text-[${COLORS.dark}]/60`}>
+          By creating a story, you agree to our Terms of Service. Story generation is free for a limited time.
+        </p>
+      </div>
+    </div>
   );
 } 
