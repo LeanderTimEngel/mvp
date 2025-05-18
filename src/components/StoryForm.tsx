@@ -197,7 +197,7 @@ export default function StoryForm() {
       <div className="relative z-10">
         <div className="text-center mb-8">
           <h2 className={`text-3xl sm:text-4xl font-bold text-[${COLORS.dark}] mb-3`}>Create Your Child&apos;s Magical Story</h2>
-          <p className={`text-[${COLORS.dark}]/70 max-w-lg mx-auto text-sm sm:text-base`}>
+          <p className={`relative z-20 text-[${COLORS.dark}] max-w-xl mx-auto text-sm sm:text-base`}>
             Fill in the details below, and we&apos;ll craft a unique audio story, voiced by AI, and send it straight to your email!
           </p>
         </div>
