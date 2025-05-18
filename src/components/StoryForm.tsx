@@ -204,13 +204,13 @@ export default function StoryForm() {
 
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-5 sm:space-y-6">
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-6">
-            {formFields.slice(0, 2).map((field) => (
+            {formFields.slice(0, 6).map((field) => (
               <FormField key={field.id} {...field} register={register} error={errors[field.id]} />
             ))}
           </div>
-          {formFields.slice(2).map((field) => (
-            <FormField key={field.id} {...field} register={register} error={errors[field.id]} />
-          ))}
+          {formFields[6] && (
+            <FormField key={formFields[6].id} {...formFields[6]} register={register} error={errors[formFields[6].id]} />
+          )}
           
           <button
             type="submit"
