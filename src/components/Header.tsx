@@ -42,7 +42,6 @@ export default function Header({ isHomePage = false }: HeaderProps) {
             <div className="flex items-center">
               {/* Desktop Navigation */}
               <div className="hidden sm:flex items-center space-x-8">
-                <Link href="/landing" className={`text-[${COLORS.dark}] hover:text-[${COLORS.primary}] transition-colors duration-200 font-medium px-1 py-1`}>Landing</Link>
                 <a href="#features" className={`text-[${COLORS.dark}] hover:text-[${COLORS.primary}] transition-colors duration-200 font-medium px-1 py-1`}>Features</a>
                 <a href="#testimonials" className={`text-[${COLORS.dark}] hover:text-[${COLORS.primary}] transition-colors duration-200 font-medium px-1 py-1`}>Testimonials</a>
                 <a href="#pricing" className={`text-[${COLORS.dark}] hover:text-[${COLORS.primary}] transition-colors duration-200 font-medium px-1 py-1`}>Pricing</a>
