@@ -1,7 +1,6 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { COLORS } from '@/lib/constants';
 
 const processSteps = [
   {
@@ -10,7 +9,7 @@ const processSteps = [
     description: "Child's details, interests, and preferences",
     icon: "👶",
     details: ["Name & Age", "Favorite Character", "Hobbies", "Story Category"],
-    color: COLORS.primary
+    gradient: 'from-[#fa6565] to-[#f2c955]'
   },
   {
     id: 2,
@@ -18,7 +17,7 @@ const processSteps = [
     description: "Our AI crafts a unique story tailored to your child",
     icon: "🤖",
     details: ["Story Generation", "Character Development", "Plot Creation", "Age-Appropriate Content"],
-    color: COLORS.secondary
+    gradient: 'from-[#f2c955] to-[#1da448]'
   },
   {
     id: 3,
@@ -26,7 +25,7 @@ const processSteps = [
     description: "Professional AI narration brings the story to life",
     icon: "🎙️",
     details: ["Text-to-Speech", "Natural Voice", "Perfect Pacing", "Clear Pronunciation"],
-    color: COLORS.success
+    gradient: 'from-[#1da448] to-[#fa6565]'
   },
   {
     id: 4,
@@ -34,43 +33,51 @@ const processSteps = [
     description: "Your personalized story arrives in your inbox",
     icon: "📧",
     details: ["Email Delivery", "Audio File", "Written Story", "Ready to Enjoy"],
-    color: COLORS.primary
+    gradient: 'from-[#fa6565] to-[#f2c955]'
   }
 ];
 
 export default function ProcessSection() {
   const [activeStep, setActiveStep] = useState(1);
-  const [isAnimating, setIsAnimating] = useState(false);
 
   // Auto-cycle through steps
   useEffect(() => {
     const interval = setInterval(() => {
-      setIsAnimating(true);
-      setTimeout(() => {
-        setActiveStep(prev => prev === 4 ? 1 : prev + 1);
-        setIsAnimating(false);
-      }, 300);
+      setActiveStep(prev => prev === 4 ? 1 : prev + 1);
     }, 3000);
 
     return () => clearInterval(interval);
   }, []);
 
   return (
-    <section className="py-20 bg-gradient-to-b from-white to-gray-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="relative py-20 sm:py-28 bg-gradient-to-br from-[#fafaf8] via-white to-[#f8f9ff] overflow-hidden">
+      {/* Background elements */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute -top-40 -left-40 w-80 h-80 bg-gradient-to-br from-[#fa6565]/5 to-[#f2c955]/5 rounded-full blur-3xl"></div>
+        <div className="absolute -bottom-40 -right-40 w-80 h-80 bg-gradient-to-tr from-[#f2c955]/5 to-[#1da448]/5 rounded-full blur-3xl"></div>
+      </div>
+
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-3xl sm:text-4xl font-bold text-[#171c3f] mb-4">
-            How We Create Your Story
+          <div className="inline-flex items-center bg-white/90 backdrop-blur-xl text-[#171c3f] px-6 py-3 rounded-full text-sm font-semibold shadow-lg border border-[#fa6565]/15 mb-8">
+            <div className="w-2.5 h-2.5 bg-gradient-to-r from-[#fa6565] to-[#f2c955] rounded-full mr-3 animate-pulse"></div>
+            How It Works
+          </div>
+          <h2 className="text-4xl sm:text-5xl md:text-6xl font-black text-[#171c3f] mb-6 leading-tight">
+            From Input to 
+            <span className="block text-transparent bg-clip-text bg-gradient-to-r from-[#fa6565] to-[#f2c955] mt-2">
+              Magical Story
+            </span>
           </h2>
-          <p className="text-xl text-[#171c3f]/80 max-w-3xl mx-auto">
-            Watch how your child&apos;s details transform into a magical, personalized story in just minutes
+          <p className="text-lg sm:text-xl text-[#171c3f]/70 max-w-3xl mx-auto font-medium">
+            Watch how your child&apos;s details transform into a personalized adventure in just minutes
           </p>
         </div>
 
         {/* Process Flow Visualization */}
         <div className="relative">
           {/* Connection Lines */}
-          <div className="hidden lg:block absolute top-1/2 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-gray-300 to-transparent transform -translate-y-1/2 z-0"></div>
+          <div className="hidden lg:block absolute top-1/2 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-[#fa6565]/10 to-transparent transform -translate-y-1/2 z-0"></div>
           
           {/* Process Steps */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 relative z-10">
@@ -79,67 +86,70 @@ export default function ProcessSection() {
                 key={step.id}
                 className={`relative transition-all duration-500 transform ${
                   activeStep === step.id 
-                    ? 'scale-105 -translate-y-2' 
+                    ? 'scale-105 -translate-y-3' 
                     : 'scale-100 translate-y-0'
-                } ${isAnimating && activeStep === step.id ? 'animate-pulse' : ''}`}
+                }`}
                 onMouseEnter={() => setActiveStep(step.id)}
               >
                 {/* Step Card */}
-                <div className={`bg-white rounded-2xl p-6 shadow-lg border-2 transition-all duration-300 ${
+                <div className={`group bg-white/90 backdrop-blur-xl rounded-3xl p-8 shadow-xl border transition-all duration-500 overflow-hidden ${
                   activeStep === step.id 
-                    ? `border-[${step.color}] shadow-xl` 
-                    : 'border-gray-200 hover:border-gray-300'
+                    ? 'border-[#fa6565]/20 shadow-2xl bg-white' 
+                    : 'border-white/50 hover:border-[#fa6565]/10'
                 }`}>
-                  {/* Step Number */}
-                  <div className={`inline-flex items-center justify-center w-12 h-12 rounded-full text-white font-bold text-lg mb-4 ${
-                    activeStep === step.id 
-                      ? `bg-[${step.color}] animate-bounce` 
-                      : 'bg-gray-400'
+                  {/* Step Number Badge */}
+                  <div className={`inline-flex items-center justify-center w-14 h-14 rounded-2xl text-white font-black text-xl mb-6 shadow-lg transition-all duration-500 bg-gradient-to-br ${step.gradient} ${
+                    activeStep === step.id ? 'scale-110' : 'scale-100'
                   }`}>
                     {step.id}
                   </div>
 
                   {/* Icon */}
-                  <div className={`text-4xl mb-3 transition-transform duration-300 ${
-                    activeStep === step.id ? 'scale-110' : 'scale-100'
+                  <div className={`text-5xl mb-4 transition-transform duration-500 filter ${
+                    activeStep === step.id ? 'scale-125 drop-shadow-md' : 'scale-100'
                   }`}>
                     {step.icon}
                   </div>
 
                   {/* Title */}
-                  <h3 className={`text-xl font-semibold mb-2 transition-colors duration-300 ${
-                    activeStep === step.id ? `text-[${step.color}]` : 'text-[#171c3f]'
+                  <h3 className={`text-xl font-extrabold mb-3 transition-colors duration-500 ${
+                    activeStep === step.id ? 'text-[#171c3f]' : 'text-[#171c3f]/80'
                   }`}>
                     {step.title}
                   </h3>
 
                   {/* Description */}
-                  <p className="text-[#171c3f]/70 text-sm mb-4">
+                  <p className="text-[#171c3f]/70 text-sm mb-6 font-medium">
                     {step.description}
                   </p>
 
                   {/* Details */}
-                  <div className={`space-y-2 transition-all duration-300 ${
-                    activeStep === step.id ? 'opacity-100 max-h-32' : 'opacity-70 max-h-20'
-                  } overflow-hidden`}>
+                  <div className={`space-y-3 transition-all duration-500 ${
+                    activeStep === step.id ? 'opacity-100' : 'opacity-60'
+                  }`}>
                     {step.details.map((detail, detailIndex) => (
-                      <div key={detailIndex} className="flex items-center text-xs text-[#171c3f]/60">
-                        <div className={`w-1.5 h-1.5 rounded-full mr-2 ${
-                          activeStep === step.id ? `bg-[${step.color}]` : 'bg-gray-400'
+                      <div key={detailIndex} className="flex items-center text-xs text-[#171c3f]/60 font-medium">
+                        <div className={`w-2 h-2 rounded-full mr-3 transition-all duration-500 bg-gradient-to-r ${
+                          activeStep === step.id ? step.gradient : 'from-gray-300 to-gray-400'
                         }`}></div>
                         {detail}
                       </div>
                     ))}
                   </div>
+
+                  {/* Active indicator */}
+                  {activeStep === step.id && (
+                    <div className={`absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r ${step.gradient} transform origin-left animate-scale-x`}></div>
+                  )}
                 </div>
 
                 {/* Arrow (hidden on mobile) */}
                 {index < processSteps.length - 1 && (
-                  <div className="hidden lg:block absolute top-1/2 -right-4 transform -translate-y-1/2 z-20">
-                    <div className={`w-8 h-8 transition-colors duration-300 ${
+                  <div className="hidden lg:flex absolute top-1/2 -right-4 transform -translate-y-1/2 z-20 items-center">
+                    <div className={`w-8 h-8 transition-all duration-500 ${
                       activeStep === step.id || activeStep === step.id + 1
-                        ? 'text-[#171c3f]' 
-                        : 'text-gray-400'
+                        ? 'text-[#fa6565] scale-110' 
+                        : 'text-gray-300 scale-100'
                     }`}>
                       <svg fill="currentColor" viewBox="0 0 20 20">
                         <path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd" />
@@ -154,15 +164,15 @@ export default function ProcessSection() {
 
         {/* Progress Indicator */}
         <div className="flex justify-center mt-12">
-          <div className="flex space-x-2">
+          <div className="flex space-x-3 bg-white/80 backdrop-blur-xl rounded-full px-6 py-3 shadow-lg">
             {processSteps.map((step) => (
               <button
                 key={step.id}
                 onClick={() => setActiveStep(step.id)}
-                className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                className={`w-3 h-3 rounded-full transition-all duration-500 ${
                   activeStep === step.id 
-                    ? `bg-[${step.color}] scale-125` 
-                    : 'bg-gray-300 hover:bg-gray-400'
+                    ? 'bg-gradient-to-r from-[#fa6565] to-[#f2c955] scale-150 shadow-md' 
+                    : 'bg-gray-300 hover:bg-gray-400 hover:scale-125'
                 }`}
                 aria-label={`View step ${step.id}: ${step.title}`}
               />
@@ -172,11 +182,14 @@ export default function ProcessSection() {
 
         {/* Call to Action */}
         <div className="text-center mt-16">
-          <div className="bg-gradient-to-r from-[#fa6565]/10 to-[#f2c955]/10 rounded-2xl p-8">
-            <h3 className="text-2xl font-bold text-[#171c3f] mb-4">
+          <div className="bg-white/90 backdrop-blur-xl rounded-3xl p-10 shadow-xl border border-white/50 max-w-3xl mx-auto">
+            <div className="w-16 h-16 bg-gradient-to-br from-[#fa6565] to-[#f2c955] rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg">
+              <span className="text-3xl text-white filter drop-shadow-md">🚀</span>
+            </div>
+            <h3 className="text-3xl font-black text-[#171c3f] mb-4">
               Ready to Create Your Child&apos;s Story?
             </h3>
-            <p className="text-[#171c3f]/80 mb-6 max-w-2xl mx-auto">
+            <p className="text-[#171c3f]/70 mb-8 max-w-2xl mx-auto font-medium">
               The entire process takes just a few minutes, and your child will have a personalized story they&apos;ll treasure forever.
             </p>
             <button
@@ -186,10 +199,11 @@ export default function ProcessSection() {
                   storyForm.scrollIntoView({ behavior: 'smooth' });
                 }
               }}
-              className="inline-flex items-center justify-center rounded-full text-sm font-medium transition-all duration-300 bg-gradient-to-r from-[#fa6565] to-[#f2c955] text-white hover:opacity-90 hover:scale-105 h-12 px-8 text-lg shadow-lg"
+              className="group relative inline-flex items-center justify-center rounded-2xl text-lg font-bold transition-all duration-300 bg-gradient-to-r from-[#fa6565] to-[#f2c955] text-white hover:shadow-2xl hover:shadow-[#fa6565]/30 hover:scale-105 h-16 px-12 overflow-hidden"
             >
-              <span className="mr-2">✨</span>
-              Start Creating Now
+              <div className="absolute inset-0 bg-gradient-to-r from-[#f2c955] to-[#fa6565] opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              <span className="relative mr-3 text-xl group-hover:scale-110 transition-transform duration-300">✨</span>
+              <span className="relative font-extrabold">Start Creating Now</span>
             </button>
           </div>
         </div>
