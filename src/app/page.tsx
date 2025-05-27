@@ -4,6 +4,8 @@ import { useState, useEffect } from 'react';
 import Header from '@/components/Header';
 import HeroSection from '@/components/HeroSection';
 import FeaturesSection from '@/components/FeaturesSection';
+import ProcessSection from '@/components/ProcessSection';
+import StoryFormSection from '@/components/StoryFormSection';
 import TestimonialsSection from '@/components/TestimonialsSection';
 import PricingSection from '@/components/PricingSection';
 import CtaSection from '@/components/CtaSection';
@@ -40,6 +42,8 @@ export default function Home() {
       {/* Render Sections */}
       <HeroSection openDemo={handleOpenDemo} />
       <FeaturesSection />
+      <ProcessSection />
+      <StoryFormSection />
       <DemoSection openDemo={handleOpenDemo} />
       <ExampleStoriesSection />
       <TestimonialsSection />

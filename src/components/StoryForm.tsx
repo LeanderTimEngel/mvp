@@ -200,7 +200,7 @@ export default function StoryForm() {
           <p className={`relative z-20 text-[${COLORS.dark}] max-w-xl mx-auto text-sm sm:text-base`}>
             Fill in the details below, and we&apos;ll craft a unique audio story, voiced by AI, and send it straight to your email!
           </p>
-        </div>
+      </div>
 
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-5 sm:space-y-6">
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-6">
@@ -211,24 +211,24 @@ export default function StoryForm() {
           {formFields[6] && (
             <FormField key={formFields[6].id} {...formFields[6]} register={register} error={errors[formFields[6].id]} />
           )}
-          
-          <button
-            type="submit"
-            disabled={isSubmitting}
+
+      <button
+        type="submit"
+        disabled={isSubmitting}
             className={`w-full flex items-center justify-center gap-2 bg-gradient-to-r from-[${COLORS.primary}] to-[${COLORS.secondary}] text-white px-6 py-3.5 rounded-xl hover:opacity-90 transition-all duration-300 shadow-lg hover:shadow-xl font-semibold text-base sm:text-lg disabled:opacity-60 disabled:cursor-not-allowed transform hover:scale-[1.02] active:scale-[0.98]`}
-          >
-            {isSubmitting ? (
-              <>
+      >
+        {isSubmitting ? (
+          <>
                 <div className="animate-spin rounded-full h-5 w-5 border-t-2 border-b-2 border-white"></div>
                 Crafting Story...
-              </>
-            ) : (
+          </>
+        ) : (
               <>
                 <span className="text-xl">✨</span> Generate My Magical Story
               </>
-            )}
-          </button>
-        </form>
+        )}
+      </button>
+    </form>
 
         <p className={`mt-6 text-xs text-center text-[${COLORS.dark}]/60`}>
           By creating a story, you agree to our Terms of Service. Story generation is free for a limited time.
